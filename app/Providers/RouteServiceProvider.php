@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Setting;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        view()->share('settings', Setting::first());
     }
 
     /**
@@ -55,7 +57,9 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace' => $this->namespace,
         ], function ($router) {
-            require base_path('routes/web.php');
+
+            require base_path('routes/site.php');
+            require base_path('routes/admin.php');
         });
     }
 
