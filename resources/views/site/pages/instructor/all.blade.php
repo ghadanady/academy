@@ -54,7 +54,7 @@
                                                     $i->image->name : 'p_default.png' }}"/>
                                                 </div>
                                                 <div class="team-block-details">
-                                                    <a href="{{url('instructor/')}}/{{$i->slug}}">
+                                              <a href="{{url('instructor')}}/{{$i->slug}}">
                                                     
                                                     {{$i->name}}</a>
                                                     <p>{{$i->job}}</p>

@@ -168,3 +168,26 @@ var $star_rating = $(".star-rating .fa"),
 $star_rating.on("click", function() {
     return $star_rating.siblings("input.rating-value").val($(this).data("rating")), $("#starn").text("5/" + $(this).data("rating")), $(this).data("rating") > 2 ? ($("#starn").removeClass("bg-red").addClass("bg-green"), $(".star-rating").removeClass("bg-red").addClass("bg-green")) : ($("#starn").removeClass("bg-green").addClass("bg-red"), $(".star-rating").removeClass("bg-green").addClass("bg-red")), SetRatingStar()
 }), SetRatingStar();
+
+
+
+    /***************************************************************************
+     * login instractor 
+     **************************************************************************/
+ 
+     $('.loginBTN').click(function(){
+        
+            var form= $(this).closest('form')
+           var action =form.attr('action');
+
+        $.ajax({
+            url: action,
+            type:'POST',
+            data:form.serialize(),
+            success:function(data)
+            {
+                console.log(data)
+            }
+
+        });
+    })

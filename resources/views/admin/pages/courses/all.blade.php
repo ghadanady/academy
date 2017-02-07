@@ -70,15 +70,6 @@
                 <!-- /.box-body -->
             </section>
 
-            @section('modals')
-                @include('admin.pages.users.modals.add-user')
-                @include('admin.pages.users.modals.edit-user')
-            @endsection
 
-            @section('templates')
-                <script id="users-edit-modal-template" type="text/html">
-                    @include('admin.pages.users.templates.edit-user')
-                </script>
-            @endsection
 
         @endsection

@@ -43,6 +43,9 @@
         <![endif]-->
     </head>
     <body>
+      @if(Auth::guard('members')->check())
+        {{Auth::guard('members')->user()->f_name }}
+      @endif
         <div id="course-regs" class="mfp-with-anim mfp-hide mfp-dialog dialog-box">
             <div class="course-regs-cont">
                 <i class="fa fa-thumbs-o-up"></i>
@@ -55,50 +58,60 @@
             <div class="dialog-title">
                 تسجيل الدخول
             </div>    
-            <form class="dialog-form">
+            <form class="dialog-form" action="{{route('site.auth.login')}}" >
+            {{ csrf_field() }}
                 <div class="form-group">
-                    <input class="form-control" placeholder="البريد الالكترونى" type="email">
+                    <input class="form-control" name="email" placeholder="البريد الالكترونى" type="email">
                 </div><!--End form-group-->
                 <div class="form-group">
-                    <input class="form-control"  placeholder="كلمة السر" type="password">
+                    <input class="form-control"   name="password" placeholder="كلمة السر" type="password">
                 </div><!--End form-group-->
                 <a class="popup-text forget" href="#password-recover-dialog" data-effect="mfp-zoom-out">
                     نسيت كلمة السر؟
                 </a>
-                <button type="submit" class="custom-btn">تسجيل دخول</button>
+                <button type="button" class="loginBTN custom-btn">تسجيل دخول</button>
             </form><!--End dialog-form-->
             <div class="dont-have">
                 ليس لديك حساب..
                 <a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">سجل الأن</a>
             </div>           
         </div><!--End login-dialog-->
+
+
         <div id="password-recover-dialog" class="mfp-with-anim mfp-hide mfp-dialog dialog-box">
             <div class="dialog-title">
                 إسترجاع كلمة المرور
             </div>    
             <form class="dialog-form">
+            {{ csrf_field() }}
                 <div class="form-group">
-                    <input class="form-control" placeholder="البريد الالكترونى" type="email">
+                    <input class="form-control"  name="password" placeholder="البريد الالكترونى" type="email">
                 </div><!--End form-group-->
                 <button type="submit" class="custom-btn">إسترجاع كلمة المرور</button>
             </form><!--End dialog-form-->
+
+
         </div><!--End login-dialog-->
         <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog dialog-box">
             <div class="dialog-title">
                 عضوية جديدة
             </div>    
             <form class="dialog-form">
+            {{ csrf_field() }}
                 <div class="form-group">
-                    <input class="form-control" placeholder="الأسم الأول" type="text">
+                    <input class="form-control" name="f_name" placeholder="الأسم الأول" type="text">
                 </div><!--End form-group-->
                 <div class="form-group">
-                    <input class="form-control" placeholder="الأسم الأخير" type="text">
+                    <input class="form-control"  name="l_name"  placeholder="الأسم الأخير" type="text">
                 </div><!--End form-group-->
                 <div class="form-group">
-                    <input class="form-control" placeholder="البريد الالكترونى" type="email">
+                    <input class="form-control" name="email"  placeholder="البريد الالكترونى" type="email">
                 </div><!--End form-group-->
                 <div class="form-group">
-                    <input class="form-control"  placeholder="كلمة السر" type="password">
+                    <input class="form-control"  name="password"  placeholder="كلمة السر" type="password">
+                </div><!--End form-group-->
+                <div class="form-group">
+                    <input class="form-control"  name="password"  placeholder="كلمة السر" type="password">
                 </div><!--End form-group-->
                 <button type="submit" class="custom-btn">تسجيل </button>
             </form><!--End dialog-form-->

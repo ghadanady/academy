@@ -9,24 +9,29 @@ use App\Instructor;
 class Instructorontroller extends Controller
 {
     /**
+     * render and paginate the instractor page.
+     *
+     * @return string
+     */
+    public function index($slug=null , Request $request=null) {
+    	
+
+            $instructors = Instructor::paginate(15);
+           return view('site.pages.instructor.all', compact('instructors'));
+        
+    }
+
+     /**
      * render and paginate the users page.
      *
      * @return string
      */
-    public function getIndex($slug=null , Request $request=null) {
-    	if(!$slug)
-    	{
-	    	$in = Instructor::where('slug', $slug)->first();
+    public function show($slug=null) {
+       
+            if(!$slug)   abort(404);
 
-	    	if(!$in)   abort(404);
-	    	
-	        return view('site.pages.instructor.instructor', compact('in'));
-        }
-        else
-        {
-           $instructors = Instructor::paginate(15);
-           return view('site.pages.instructor.all', compact('instructors'));
-
-        }
+            $in = Instructor::where('slug', $slug)->first();
+            
+            return view('site.pages.instructor.instructor', compact('in'));
     }
 }

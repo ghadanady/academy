@@ -40,7 +40,8 @@ class AuthController extends Controller
         ]);
 
         if ($v->fails()) {
-             return redirect()->back()->withErrors(['خطأ', implode('<br>', $v->errors()->all())]);
+            return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
+            // return redirect()->back()->withErrors(['خطأ', implode('<br>', $v->errors()->all())]);
         }
 
         // grapping Member credentials

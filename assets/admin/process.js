@@ -7,15 +7,11 @@
     var csrf = new FormData($('#csrf')[0]);
     var loading = $('#loading').html();
 
+   
 
 
-   /***************************************************************************
-    * filter instractor 
-    **************************************************************************/
-    $(document).ready(function(){
-        alert("ddd");
-        $('.filter->ul->li').first().removeClass( "active" );
-    })
+
+
     
     $('.filter').click(function(){
 

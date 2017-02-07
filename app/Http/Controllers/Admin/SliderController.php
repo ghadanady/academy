@@ -32,10 +32,13 @@ class SliderController extends Controller
 
         $v = validator($r->all(), [
             "title" => 'required',
+            "sub_title"=>'required'
         ]);
         // setting custom attribute names
         $v->setAttributeNames([
             "title" => 'لابد من اضافه عنوان للصوره',
+            "sub_title"=>'الوصف'
+
 
 
         ]);
@@ -45,26 +48,12 @@ class SliderController extends Controller
             return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
         }
 
-        $slider = new Slider;
-
-        // set data for the new created data
-        $slider->title = $r->title;
+        $slider = new Slider($r->except(['_token']));
  
 
         // save the new Trademarkdata
         if ($slider->save()) {
 
-            // validate if there's an image to save it
-            $destination = storage_path('uploads/images/slider');
-            if($r->avatar){
-
-                $avatar = microtime(time()) . "_" . $r->avatar->getClientOriginalName();
-                $image = $slider->image()->create([
-                    'name' => $avatar
-                ]);
-
-                $r->avatar->move($destination,$avatar);
-            }
 
             return msg('success.save',['msg' => 'تمت الاضافة بنجاح ']);
         }
@@ -120,24 +109,9 @@ class SliderController extends Controller
 
         // set the new values for update
         $slider->title = $r->title;
+        $slider->sub_title = $r->sub_title;
+        $slider->link = $r->link;
 
-
-        // validate if there's an image remove the old one and  save the new one.
-        $destination = storage_path('uploads/images/slider');
-        if($r->avatar){
-
-            $avatar = microtime(time()) . "_" . $r->avatar->getClientOriginalName();
-
-            if($slider->image){
-                @unlink("{$destination}/{$user->image->name}");
-            }
-
-            $slider->image()->updateOrCreate([],[
-                'name' => $avatar
-            ]);
-
-            $r->avatar->move($destination,$avatar);
-        }
 
         // update the ad data in the database.
         if ($slider->save()) {

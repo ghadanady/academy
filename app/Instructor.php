@@ -46,4 +46,21 @@ class Instructor extends Model
     {
         return $this->belongsTo('App\Category' ,'cat_id');
     }
+
+    
+    /**
+     * Scope a query to only include active course.
+    */
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+ 
+    
+
+    public function isActive()
+    {
+        return (bool) $this->active;
+    }
 }

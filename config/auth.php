@@ -36,6 +36,9 @@ return [
     */
 
     'guards' => [
+
+
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -44,6 +47,15 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+        ],
+         'members' => [
+            'driver' => 'session',
+            'provider' => 'members',
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'members',
         ],
     ],
 
@@ -69,11 +81,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+            'members' =>  [
+                'driver' => 'eloquent',
+                'model' => App\Member::class,
+            ],
+        
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
+
+
     ],
 
     /*
@@ -97,6 +113,14 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+          'members' => [
+            'provider' => 'members',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
     ],
 
 ];

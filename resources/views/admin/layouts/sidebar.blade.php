@@ -38,6 +38,12 @@
                         <i class="fa fa-dashboard"></i> <span>المستخدمين </span>
                     </a>
                 </li>
+
+                 <li class="treeview">
+                    <a href="{{url('admin/slider')}}">
+                        <i class="fa fa-dashboard"></i> <span>الاسلسدر   </span>
+                    </a>
+                </li>
                  <li class="treeview">
                     <a href="{{url('admin/instructor')}}">
                         <i class="fa fa-dashboard"></i> <span>المحاضرين  </span>
@@ -56,9 +62,15 @@
                     </a>
                 </li>
 
+
                  <li class="treeview">
-                    <a href="{{url('admin/users')}}">
-                        <i class="fa fa-dashboard"></i> <span>المدونه  </span>
+                    <a href="{{url('admin/article')}}">
+                        <i class="fa fa-dashboard"></i> <span>المقالات  </span>
+                    </a>
+                </li>
+                  <li class="treeview">
+                    <a href="{{url('admin/new')}}">
+                        <i class="fa fa-dashboard"></i> <span>الاخبار  </span>
                     </a>
                 </li>
               

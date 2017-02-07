@@ -85,12 +85,10 @@ Route::group(['namespace' => 'Site'], function () {
     });
 
 
-    /**
-    *  Instructor routes
-    */
-    Route::group(['prefix'=>'instructor'],function(){
-        Route::get('/{slug?}/{r?}', 'Instructorontroller@getIndex')->name('site.instructor.index');
-    });
+
+     Route::resource('instructor', 'Instructorontroller');
+    Route::resource('article', 'ArticleController');
+
 
 
 

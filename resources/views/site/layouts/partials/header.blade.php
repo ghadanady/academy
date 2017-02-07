@@ -32,8 +32,8 @@
                                     </ul>
                                     @endif
                                 </li>
-                                <li><a href="{{route('site.instructor.index')}}">المحاضرين</a></li>
-                                <li><a href="blogs.html">المدونة</a></li>
+                                <li><a href="{{url('instructor')}}">المحاضرين</a></li>
+                                <li><a href="{{url('article')}}">المدونة</a></li>
                                 <li><a href="about.html">من نحن</a></li>
                                 <li><a href="contact.html">إتصل بنا</a></li>
                             </ul>                           

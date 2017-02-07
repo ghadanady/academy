@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">{{ trans('admin_global.users_edit_header') }}</h4>
             </div>
-            <form action="{{url('admin/users/edit')}}" class="ajax-form" enctype="multipart/form-data" method="post"
+            <form action="{{url('admin/slider/edit')}}" class="ajax-form" enctype="multipart/form-data" method="post"
              onsubmit="return false;">
                 {!! csrf_field() !!}
                 <div id="users-edit-modal-body" class="modal-body">

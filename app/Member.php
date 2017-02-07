@@ -14,9 +14,7 @@ class Member extends Authenticatable
         'l_name',
         'email',
         'password',
-        'phone',
-        'address',
-        'image',
+
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -50,5 +48,22 @@ class Member extends Authenticatable
     public function orders()
     {
     	return $this->hasMany('App\Order');
+    }
+
+    
+    /**
+     * Scope a query to only include active course.
+    */
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+    
+    
+
+    public function isActive()
+    {
+        return (bool) $this->active;
     }
 }

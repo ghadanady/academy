@@ -24,6 +24,7 @@ class Authenticate
             } else {
                 return redirect()->guest('auth');
             }
+            // return redirect()->guest('auth')
         }
 
 

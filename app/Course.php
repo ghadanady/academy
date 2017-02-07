@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Course extends Model
 {
@@ -55,6 +56,9 @@ class Course extends Model
     {
         return $query->where('active', 1);
     }
+
+ 
+    
 
     public function isActive()
     {

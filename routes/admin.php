@@ -76,11 +76,56 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         });
 
 
+        /**
+        * article routes
+        */
+        Route::group(['prefix' => 'article'], function () {
+            Route::get('/', 'ArticleController@getIndex')->name('admin.article.index');
+            Route::post('/add','ArticleController@postAdd');
+            Route::get('edit/{id}','ArticleController@getEdit')->name('admin.article.edit');
+            Route::post('/edit', 'ArticleController@postEdit');
+            Route::post('/action/{action}', 'ArticleController@postAction');
+            Route::post('info/{id}', 'ArticleController@postInfo')->name('admin.article.info');
+            Route::get('/delete/{id}', 'ArticleController@getDelete')
+            ->name('admin.ads.delete');
+            Route::get('/filter/{filter}', 'ArticleController@getFilter');
+            Route::get('/search/{q?}', 'ArticleController@getSearch');
+        });
+
+        /**
+        * article routes
+        */
+        Route::group(['prefix' => 'new'], function () {
+            Route::get('/', 'NewsController@getIndex')->name('admin.new.index');
+            Route::post('/add','NewsController@postAdd');
+            Route::get('edit/{id}','NewsController@getEdit')->name('admin.new.edit');
+            Route::post('/edit', 'NewsController@postEdit');
+            Route::post('info/{id}', 'NewsController@postInfo')->name('admin.new.info');
+            Route::get('/delete/{id}', 'NewsController@getDelete')
+            ->name('admin.ads.delete');
+
+        });
+
+        /**
+        * slider route
+        */
+        Route::group(['prefix' => 'slider'], function () {
+            Route::get('/', 'SliderController@getIndex')->name('admin.slider.index');
+            Route::get('edit/{id}', 'SliderController@getEdit')->name('admin.slider.edit');
+            Route::post('edit', 'SliderController@postEdit');
+            Route::get('add', 'SliderController@getAdd')->name('admin.slider.add');
+            Route::post('add', 'SliderController@postAdd');
+            Route::post('info/{id}', 'SliderController@postInfo')->name('admin.slider.info');
+            Route::get('/delete/{id}','SliderController@getDelete')->name('admin.slider.delete');
+        });
 
 
 
 
-            /**
+
+
+
+      /**
         * Home Routes
         */
         Route::get('/', function() {

@@ -15,7 +15,7 @@ class CourseController extends Controller
     public function getIndex($slug , Request $request)
     {
 
-
+        if(!$slug)   abort(404);
         $course = Course::where('slug', $slug)->first();
        if($course->lessons_learned) $course->lessons_learned=explode('-',$course->lessons_learned);
        if($course->aim) $course->aim=explode('-',$course->aim);
