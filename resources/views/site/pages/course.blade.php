@@ -127,100 +127,63 @@
                                         </div>
                                         <div class="tab-pane fade in" id="tab3">
                                             <div class="tab-content">
+    @if(count($course->comments)>0)
+    @foreach($course->comments as $c)
                                                 <div class="comment-block">
                                                     <div class="person-img">
-                                                        <img src="images/team-5.jpg">
+                                                        <img src="{{url('assets/images/team-5.jpg')}}">
                                                     </div><!--End person-img-->
                                                     <div class="person-comment">
                                                         <h3>
-                                                            هشام جمال
+                                                            {{$c->member->f_name}}
                                                         <ul class="rate">
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
+                                                           
+                                               
+
+                                                   <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                     <li><i class="fa fa-star"></i></li>
+                                                      <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star-o"></i></li>
+
+                                                          
+
                                                         </ul>
                                                     </h3>
                                                     <p>
-                                                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. 
+                                                       {{$c->comment}} 
                                                     </p>
                                                 </div><!--End person-comment-->
                                             </div><!--End comment-block-->
-                                                <div class="comment-block">
-                                                    <div class="person-img">
-                                                        <img src="images/team-5.jpg">
-                                                    </div><!--End person-img-->
-                                                    <div class="person-comment">
-                                                        <h3>
-                                                            هشام جمال
-                                                            <ul class="rate">
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                        </h3>
-                                                        <p>
-                                                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. 
-                                                        </p>
-                                                    </div><!--End person-comment-->
-                                                </div><!--End comment-block-->
-                                                <div class="comment-block">
-                                                    <div class="person-img">
-                                                        <img src="images/team-5.jpg">
-                                                    </div><!--End person-img-->
-                                                    <div class="person-comment">
-                                                        <h3>
-                                                            هشام جمال
-                                                            <ul class="rate">
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                        </h3>
-                                                        <p>
-                                                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. 
-                                                        </p>
-                                                    </div><!--End person-comment-->
-                                                </div><!--End comment-block-->
-                                                <div class="comment-block">
-                                                    <div class="person-img">
-                                                        <img src="images/team-5.jpg">
-                                                    </div><!--End person-img-->
-                                                    <div class="person-comment">
-                                                        <h3>
-                                                        هشام جمال
-                                                            <ul class="rate">
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                        </h3>
-                                                        <p>
-                                                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. 
-                                                        </p>
-                                                    </div><!--End person-comment-->
-                                                </div><!--End comment-block-->
+
+    @endforeach
+    @else
+    <div class="alert alert-info">لم يتم اضافه كومنتات حتى الان كن اول من يعلق </div>                                                   
+    @endif
+       
+
                                                 <div class="widget">
                                                     <div class="widget-title">
                                                         أضف تعليق عن الكورس
                                                     </div>
                                                     <div class="widget-content">
-                                                        <form class="rate-form">
+                                        <form action ='{{url("course/comment")}}'
+                                        onsubmit="return false;" 
+                                                        method="post" 
+                                                        class="rate-form">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden"
+                                                         name="course_id"
+                                                         value="{{$course->id}}" 
+                                                         />
+                                                        
+                                                        
                                                             <div class="form-group">
-                                                                <input class="form-control" type="text" placeholder="الأسم">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input class="form-control" type="text" placeholder="االبريد الألكترونى">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <textarea class="form-control" placeholder="التعليق"></textarea>
+                                                                <textarea 
+                                                                name="comment" 
+    
+
+                                                                class="form-control" placeholder="التعليق"></textarea>
                                                             </div>
                                                             <div class="form-group">
                                                                 <span>ضع تقييمك : </span>
@@ -239,7 +202,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <button class="custom-btn">إرسال التقييم</button>
+                                                                <button class="addComment custom-btn">إرسال التقييم</button>
                                                             </div>
                                                         </form>
                                                     </div>

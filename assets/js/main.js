@@ -186,8 +186,114 @@ $star_rating.on("click", function() {
             data:form.serialize(),
             success:function(data)
             {
-                console.log(data)
+                toastr.error(data.msg, 'Inconceivable!');
             }
 
         });
     })
+
+
+    /***************************************************************************
+     * register instractor 
+     **************************************************************************/
+ 
+     $('.registerLoginBTN').click(function(){
+
+            var form= $(this).closest('form')
+           var action =form.attr('action');
+
+        $.ajax({
+            url: action,
+            type:'POST',
+            data:form.serialize(),
+            success:function(data)
+            {
+                if(data.status=='error')
+                {
+                 $('.msg').addClass('alert alert-danger');
+                }else{
+                 $('.msg').addClass('alert alert-success');
+                 location.reload();
+                }
+                
+
+                
+                $('.msg').html(data.msg);
+               
+
+            }
+
+        });
+    })
+     /***************************************************************************
+      * join course 
+      **************************************************************************/
+
+      toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+
+      $('.joinCourse').click(function(){            
+        var action =$(this).attr('data-action');
+
+         $.ajax({
+             url: action,
+             type:'GET',
+             success:function(data)
+             {
+                 if(data.status=='error')
+                 {
+                  toastr.error(data.msg);
+
+                 }else{
+
+                  toastr.success(data.msg);
+                 }                
+
+             }
+
+         });
+     });
+
+     /***************************************************************************
+      * add comment
+      **************************************************************************/
+
+       $('.addComment').click(function(){    
+          var form= $(this).closest('form')        
+         var action =form.attr('action');
+
+          $.ajax({
+              url: action,
+              type:'POST',
+              data:form.serialize(),
+              success:function(data)
+              {
+                  if(data.status=='error')
+                  {
+                   toastr.error(data.msg);
+
+                  }else{
+
+                   toastr.success(data.msg);
+                  }                
+
+              }
+
+          });
+      });
+     

@@ -82,12 +82,22 @@ Route::group(['namespace' => 'Site'], function () {
     */
     Route::group(['prefix'=>'course'],function(){
         Route::get('/{slug}', 'CourseController@getIndex')->name('site.course.index');
+        Route::get('/join/{id}', 'CourseController@getJoin');
+        Route::post('/comment', 'CourseController@postComment');
     });
 
 
 
      Route::resource('instructor', 'Instructorontroller');
     Route::resource('article', 'ArticleController');
+
+      /**
+    *  Category routes
+    */
+    Route::group(['prefix'=>'instructor'],function(){
+        Route::get('/{slug}', 'Instructorontroller@getIndex')->name('site.instructor.index');
+        Route::post('/comment', 'Instructorontroller@postComment');
+    });
 
 
 

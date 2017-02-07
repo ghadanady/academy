@@ -28,6 +28,7 @@ class AuthController extends Controller
 
     public function postLogin(Request $r){
 
+        // dd($r->all());
        $v =  validator($r->all(), [
             'email' => 'required|email',
             'password' => 'required|min:2',
@@ -54,31 +55,26 @@ class AuthController extends Controller
             // login the Member
             Auth::guard('members')->login($member ,$r->has('remember'));
 
-            return redirect()->intended('/');
+             return msg('success.save',['msg' => "تم التسجيل بنجاح "]);
         }
         // failed
-        return redirect()->back()->withErrors(['فشل تسجيل الدخول' , 'من فضلك ادخل بيانات صحيحة']);
+         return msg('error.save',['msg' => "من فضلك ادخل بيانات صحيحه"]);
+            // return redirect()->back()->withErrors(['خطأ', implode('<br>', $v->errors()->all())]);
     }
 
     public function getLogout(){
         auth()->guard('members')->logout();
 
-        return view('site.auth.index');
+       return redirect('/');
     }
 
     public function postRegister(Request $r){
 
         $v =  validator($r->all(), [
             'f_name' => 'required|min:2',
-            'l_name' => 'required|min:2',
             'email' => 'required|email|unique:members',
-            'country' => 'required',
-            'city' => 'required',
-            'address' => 'required|min:2',
-            'phone' => 'required|phone|unique:members',
             'password' => 'required|min:2',
-            'cpassword' => 'required|min:2|same:password',
-            'agree'=> " required",
+            'cpassword' => 'required|min:2|same:password'
 
         ],[
             'agree.required' => ' يجب الموافقه علي الشروط والاحكام',
@@ -89,35 +85,26 @@ class AuthController extends Controller
             'f_name' => "الاسم الاول (الشخصي)",
             'l_name' => "الاسم الاخير(العائلي)",
             'email' => "البريد الالكتروني",
-            'country' => 'البلد',
-            'city' => 'المدينه',
-            'address' => 'العنوان',
-            'phone' => 'رقم الجوال',
             'password' => "الرقم السري",
             'cpassword'=> "تاكيد الرقم السري",
         ]);
 
         if ($v->fails()) {
-             return redirect()
-             ->back()
-             ->withInput()
-             ->withErrors(['خطأ', implode('<br>', $v->errors()->all())]);
+             return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
         }
 
         $member = new Member();
         $member->f_name = $r->input('f_name');
         $member->l_name = $r->input('l_name');
         $member->email = $r->input('email');
-        $member->phone = $r->input('phone');
-        $member->job = $r->input('job');
-        $member->country = $r->input('country');
-        $member->city = $r->input('city');
         $member->password =  bcrypt($r->input('password'));
-        $member->address = $r->input('address');
+        $member->active =  1;
+
 
         if($member->save())
         {
-           return redirect()->back()->withSuccess(['  تم تسجيل بياناتك بنجاح, يمكنك الان تسجيل الدخول.']);
+           
+           return msg('success.save',['msg' => "تم التسجيل بنجاح "]);
         }
 
     }

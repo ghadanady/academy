@@ -24,7 +24,8 @@
             "App\\": "app/"
         },
           "files": [
-            "bootstrap/helpers.php"
+            "bootstrap/helpers.php",
+            "vendor/I18N/Arabic.php"
         ]
 
     },

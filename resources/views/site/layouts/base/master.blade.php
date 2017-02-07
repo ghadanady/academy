@@ -30,6 +30,7 @@
         {{ Html::style('assets/vendor/owl.carousel/owl.theme.css') }}
         {{ Html::style('assets/vendor/magnific-popup/css/magnific-popup.css') }}
         {{ Html::style('assets/vendor/magnific-popup/css/custom.css') }}
+        {{ Html::style('assets/css/toastr.css') }}
 
 
         <!-- Site Css
@@ -43,9 +44,8 @@
         <![endif]-->
     </head>
     <body>
-      @if(Auth::guard('members')->check())
-        {{Auth::guard('members')->user()->f_name }}
-      @endif
+   
+   
         <div id="course-regs" class="mfp-with-anim mfp-hide mfp-dialog dialog-box">
             <div class="course-regs-cont">
                 <i class="fa fa-thumbs-o-up"></i>
@@ -57,8 +57,9 @@
         <div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog dialog-box">
             <div class="dialog-title">
                 تسجيل الدخول
-            </div>    
-            <form class="dialog-form" action="{{route('site.auth.login')}}" >
+            </div>   
+            <div style="margin:10px;" class="msg"></div>  
+            <form class="dialog-form" action="{{route('site.auth.login')}}"  method="post">
             {{ csrf_field() }}
                 <div class="form-group">
                     <input class="form-control" name="email" placeholder="البريد الالكترونى" type="email">
@@ -69,7 +70,7 @@
                 <a class="popup-text forget" href="#password-recover-dialog" data-effect="mfp-zoom-out">
                     نسيت كلمة السر؟
                 </a>
-                <button type="button" class="loginBTN custom-btn">تسجيل دخول</button>
+                <button type="button" class="registerLoginBTN custom-btn">تسجيل دخول</button>
             </form><!--End dialog-form-->
             <div class="dont-have">
                 ليس لديك حساب..
@@ -95,8 +96,9 @@
         <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog dialog-box">
             <div class="dialog-title">
                 عضوية جديدة
-            </div>    
-            <form class="dialog-form">
+            </div>  
+            <div style="margin:10px;" class="msg"></div>  
+            <form class="dialog-form" action="{{route('site.auth.register')}}"  method="post" >
             {{ csrf_field() }}
                 <div class="form-group">
                     <input class="form-control" name="f_name" placeholder="الأسم الأول" type="text">
@@ -111,9 +113,9 @@
                     <input class="form-control"  name="password"  placeholder="كلمة السر" type="password">
                 </div><!--End form-group-->
                 <div class="form-group">
-                    <input class="form-control"  name="password"  placeholder="كلمة السر" type="password">
+                    <input class="form-control"  name="cpassword"  placeholder="تاكيد الرقم السرى" type="password">
                 </div><!--End form-group-->
-                <button type="submit" class="custom-btn">تسجيل </button>
+                <button type="button" class=" registerBTN custom-btn">تسجيل </button>
             </form><!--End dialog-form-->
             <div class="dont-have">
                 لديك حساب بالفعل ..
@@ -145,6 +147,9 @@
         {{ Html::script('assets/vendor/magnific-popup/js/magnific-popup.js') }}
         {{ Html::script('assets/vendor/count-to/jquery.countTo.js') }}
         {{ Html::script('assets/vendor/mixitup/jquery.mixitup.js') }}
+        {{ Html::script('assets/js/toastr.min.js') }}
+        
+
 
         
         <!-- Site JS

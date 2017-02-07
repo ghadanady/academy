@@ -36,24 +36,27 @@
                         <div class="course-img">
 
                             <img 
-                            src="{{ url('storage/uploads/images/course') }}/
-                            {{ $c->image ? $c->image->name : 'p_default.png' }}"/>
+                            src="{{ url('storage/uploads/images/course') }}/{{ $c->image ? $c->image->name : 'p_default.png' }}"/>
                             <div class="hover">
                                 <a href="{{$c->getUrl() }}" class="custom-btn">المزيد</a>
-                                <a class="popup-text custom-btn" href="#course-regs" data-effect="mfp-move-from-top">سجل الأن</a>
+                                <a class="custom-btn joinCourse" 
+                                data-action='{{url("course/join/$c->id")}}'
+                                 >سجل الأن</a>
+                                
+
                             </div>
                         </div><!--End Course-img-->
                         <div class="course-content">
                             <div class="course-heading">
-                                <a href="only-course.html">
+                                <a href="{{$c->getUrl() }}">
                                  {{$c->name}}
                                 </a>
                                 <ul class="author">
                                     <li class="lecturer">
-                                        <a href="only-lecturer.html">{{$c->instarctor->name}}</a>
+                                        <a href="{{$c->instarctor->getUrl() }}">{{$c->instarctor->name}}</a>
                                     </li>
                                     <li class="category">
-                                        <a href="only-catogry.html"> {{$c->Category->name}}</a>
+                                        <a href="{{$c->Category->getUrl() }}"> {{$c->Category->name}}</a>
                                     </li>
                                 </ul>
                             </div><!--End Heading-->

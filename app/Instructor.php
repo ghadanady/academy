@@ -38,7 +38,7 @@ class Instructor extends Model
     public function getUrl()
     {
 
-        return route('site.category.index',['slug'=> $this->slug]);
+        return route('site.instructor.index',['slug'=> $this->slug]);
 
     }
 
@@ -62,5 +62,10 @@ class Instructor extends Model
     public function isActive()
     {
         return (bool) $this->active;
+    }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Comment', 'commentable');
     }
 }

@@ -7,12 +7,24 @@
                     <button class="btn btn-responsive-nav" data-toggle="collapse" data-target=".nav-main-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
+@if(!Auth::guard('members')->check())
                     <div class="header-widget">
                         <a class="popup-text custom-btn" href="#login-dialog" data-effect="mfp-move-from-top">
                             <i class="fa fa-user"></i>
                             <span> تسجيل دخول</span>
                         </a>
                     </div><!--End header-social-->
+@else
+
+<div class="header-widget">
+    <a class="custom-btn" href="{{route('site.auth.logout')}}" >
+        <i class="fa fa-user"></i>
+        <span> تسجيل خروج </span>
+    </a>
+</div>
+
+@endif
+
                 </div><!--End container-->
                 <div class="navbar-collapse nav-main-collapse collapse">
                     <div class="container-fluid">
