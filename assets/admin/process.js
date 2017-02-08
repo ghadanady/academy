@@ -220,6 +220,7 @@
     **************************************************************************/
 
     $(document).on('click', ".ajax-submit", function (e) {
+
         e.preventDefault();
         var ajaxSubmit = $(this);
         var form = $(this).closest('form');

@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Category;
 use App\Instructor;
+use App\Course;
+use App\Member;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,9 +18,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+
         view()->share([
             'categories'=> Category::where('active','1')->get(),
             'instructores'=> Instructor::where('active','1')->get(),
+            'count_cources'=> count(Course::Active()->get()),
+            'count_instructor'=> count(Instructor::Active()->get()),
+            'count_member'=> count(Member::Active()->get()),
+
+
             ]);
     }
 

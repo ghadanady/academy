@@ -21,12 +21,12 @@ class SettingsController extends Controller {
     public function postEdit(Request $request) {
         // basic validation rules
         $v = validator($request->all(), [
-            'default_locale'     => 'required|numeric',
+
             'map_lat'     => 'required|numeric',
             'map_lng'     => 'required|numeric',
             'site_name'     => 'required|min:2',
             'site_phone1'        => 'required|min:7',
-            'site_phone2'        => 'min:7|phone',
+            'site_phone2'        => 'min:7',
             'site_email'         => 'required|email',
             'site_address'       => 'min:2',
             'facebook'      => 'min:2',
@@ -64,6 +64,21 @@ class SettingsController extends Controller {
         $settings->meta_keywords=$request->input('meta_keywords');
         $settings->meta_author=$request->input('meta_author');
         $settings->meta_description=$request->input('meta_description');
+
+        $settings->l_block_title=$request->input('l_block_title');
+        $settings->l_block_des=$request->input('l_block_des');
+
+        $settings->s_block1_title=$request->input('s_block1_title');
+        $settings->s_block1_des=$request->input('s_block1_des')
+        ;
+        $settings->s_block2_title=$request->input('s_block2_title');
+        $settings->s_block2_des=$request->input('s_block2_des');
+
+
+
+
+
+
 
 
         $destination = storage_path('uploads/images/logo');

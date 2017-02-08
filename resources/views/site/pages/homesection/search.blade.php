@@ -3,25 +3,25 @@
         <div class="col-md-7">
             <div class="about-wrap">
                 <div class="title">
-                الأكاديمية نظام تعليمى متكامل
+              {{ $settings->l_block_title }}
                 </div>
                 <div class="details">
-                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأههناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأه
+                   {{ $settings->l_block_des}}
                 </div>
                 <div class="spacer-20"></div>
                 <div class="features">
                     <div class="only-feat">
                         <i class="fa fa-users"></i>
-                        <h3>محاضرين ذو كفاءة</h3>
+                        <h3>{{ $settings->s_block1_title }}</h3>
                         <p>
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص 
+                           {{ $settings->s_block1_des }}
                         </p>
                     </div>
                     <div class="only-feat">
                         <i class="fa fa-certificate"></i>
-                        <h3>شهادات معتمدة</h3>
+                        <h3>{{ $settings->s_block2_title }}</h3>
                         <p>
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص 
+                           {{ $settings->s_block2_des }}
                         </p>
                     </div>                                            
                     
@@ -36,27 +36,31 @@
                     بحث من هنا
                 </div>
                 <div class="search-content">
-                    <form>
+                    <form action="{{url('search/')}}" method="POST">
+                     {{ csrf_field() }}
                         <div class="form-group">
                             <label>إسم الدورة :</label>
-                            <input class="form-control" type="text">
+                            <input  name="name" class="form-control" type="text">
                         </div>
                         <div class="form-group">
                             <label>التصنيف :</label>
-                            <select class="form-control">
-                                <option>برمجة</option>
-                                <option>محاسبة</option>
-                                <option>إقتصاد</option>
-                                <option>لغات</option>
+                            @if(count($categories)>0)
+                            <select  name="cat_id" class="form-control">
+
+                             @foreach($categories as $c)
+                                <option value="{{$c->id}}">{{$c->name}}</option>
+                            @endforeach
                             </select>
+                            @endif
                         </div>
-                    </form>
+                    
                 </div>
                 <div class="search-footer">
                     <div class="form-group">
-                        <button class="custom-btn">بحث</button>
+                        <button type="submit" class="custom-btn">بحث</button>
                     </div>
                 </div>
+            </form>
             </div><!--End Search-wrap-->
         </div>
     </div><!--End Row-->

@@ -34,6 +34,8 @@ Route::group(['namespace' => 'Site'], function () {
     *  Home routes
     */
     Route::get('/', 'HomeController@getIndex')->name('site.index');
+    Route::get('/about', 'HomeController@getAbout')->name('site.about');
+    Route::get('/contact', 'HomeController@getContact')->name('site.contact');
 
     // /**
     // *  About routes
@@ -49,24 +51,24 @@ Route::group(['namespace' => 'Site'], function () {
     //     Route::get('/{slug}', 'InfoController@getIndex')->name('site.infos.index');
     // });
 
-    // /**
-    // *  Search routes
-    // */
-    // Route::group(['prefix'=>'search'],function(){
-    //     Route::get('/', 'SearchController@getIndex')->name('site.search.index');
-    //     Route::get('/latest-offers', 'SearchController@getLatestOffers')->name('site.search.offers');
-    // });
+    /**
+    *  Search routes
+    */
+    Route::group(['prefix'=>'search'],function(){
+        Route::post('/', 'SearchController@postSearch')->name('site.search.index');
+        Route::get('/latest-offers', 'SearchController@getLatestOffers')->name('site.search.offers');
+    });
 
 
 
-    // /**
-    // *  Contact routes
-    // */
-    // Route::group(['prefix'=>'contact'],function(){
-    //     Route::get('/', 'ContactController@getIndex')->name('site.contact.index');
-    //     Route::post('/subscribe', 'ContactController@postSubscribe')->name('site.contact.subscribe');
-    //     Route::post('/send', 'ContactController@postSend')->name('site.contact.send');
-    // });
+    /**
+    *  Contact routes
+    */
+    Route::group(['prefix'=>'contact'],function(){
+        Route::get('/', 'ContactController@getIndex')->name('site.contact.index');
+        Route::post('/subscribe', 'ContactController@postSubscribe')->name('site.contact.subscribe');
+        Route::post('/send', 'ContactController@postSend')->name('site.contact.send');
+    });
 
 
     /**

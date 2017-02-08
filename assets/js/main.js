@@ -296,4 +296,35 @@ $star_rating.on("click", function() {
 
           });
       });
+
+
+       /***************************************************************************
+        * contact 
+        **************************************************************************/
+
+         $('.contact').click(function(){    
+            var form= $(this).closest('form')        
+           var action =form.attr('action');
+
+            $.ajax({
+                url: action,
+                type:'POST',
+                data:form.serialize(),
+                success:function(data)
+                {
+                    if(data.status=='error')
+                    {
+                     toastr.error(data.msg);
+
+                    }else{
+
+                     toastr.success(data.msg);
+                    }                
+
+                }
+
+            });
+        });
      
+
+    

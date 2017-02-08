@@ -14,10 +14,13 @@
                             </div><!--End Col-sm-6-->
                             <div class="col-sm-5">
                                 <div class="newsletter-form">
-                                    <form>
+                                    <form action="{{ route('site.contact.subscribe') }}"  method="POST">
+                                    {!! csrf_field() !!}
                                         <div class="form-group">
-                                            <input class="form-control" type="email" placeholder="البريد الألكترونى">
-                                            <button class="custom-btn">
+                                            <input class="form-control" 
+                                            name="email"
+                                            type="email" placeholder="البريد الألكترونى">
+                                            <button type="button"  class="contact custom-btn">
                                                 <i class="fa fa-envelope"></i>
                                                 إشترك
                                             </button>
@@ -34,12 +37,12 @@
                             <div class="col-md-4 col-sm-12">
                                 <div class="widget">
                                     <div class="widget-content">
-                                        <a class="logo" href="index.html">
+                                        <a class="logo" href="{{ $settings->getLogo() }}">
                                             <i class="fa fa-graduation-cap"></i>
-                                            الأكاديمية
+                                           {{ $settings->site_name }}
                                         </a>
                                         <p>
-                                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأه
+                                           {{ $settings->meta_description }}
                                         </p>
                                     </div><!--End Widget-content-->
                                 </div><!--End Widget-->
@@ -51,12 +54,12 @@
                                     </div><!--End Widget-title-->
                                     <div class="widget-content">
                                         <ul class="quick-link">
-                                            <li><a href="">الرئيسية</a></li>
-                                            <li><a href="">من نحن</a></li>
-                                            <li><a href="">تواصل معنا</a></li>
-                                            <li><a href="">الدورات</a></li>
-                                            <li><a href="">المحاضرين</a> </li>
-                                            <li><a href="">المدونة</a></li>
+                                            <li><a href="{{url('/')}}">الرئيسية</a></li>
+                                            <li><a href="{{url('/about')}}">من نحن</a></li>
+                                            <li><a href="{{url('/contact')}}">تواصل معنا</a></li>
+                                            
+                                            <li><a href="{{url('instructor')}}">المحاضرين</a> </li>
+                                            <li><a href="{{url('article')}}">المدونة</a></li>
                                         </ul>
                                     </div><!--End Widget-content-->
                                 </div><!--End Widget-->

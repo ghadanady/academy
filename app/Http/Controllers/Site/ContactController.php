@@ -29,7 +29,7 @@ class ContactController extends Controller
         $v =  $this->validateContactForm($request);
 
         if($v->fails()){
-            return ['status' => 'error' , 'title' => 'فشل عمليه الارسال','msg' => implode('<br>',$v->errors()->all())];
+             return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
         }
 
         $contact = new Contact;
@@ -38,9 +38,10 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->message = $request->message;
         $contact->subject = $request->subject;
+        $contact->phone = $request->phone;
         $contact->save();
 
-        return ['status' => 'success' , 'title' => 'نجاح عمليه الارسال','msg' => 'تم ارسال الرسالة بنجاح.'];
+        return msg('success.save',['msg' => "تم ارسال رسالتك شكرا لتواصلك "]);
     }
     /**
     * Validating the request for the contact form
@@ -77,7 +78,7 @@ class ContactController extends Controller
         $v =  $this->validateSubscribeForm($request);
 
         if($v->fails()){
-            return ['status' => 'warning' , 'title' => 'فشل عمليه الاشتراك','msg' => implode('<br>',$v->errors()->all())];
+           return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
         }
 
         $subscribtion = new Subscribtion;
@@ -85,7 +86,8 @@ class ContactController extends Controller
         $subscribtion->email = $request->email;
         $subscribtion->save();
 
-        return ['status' => 'success' , 'title' => 'نجاح عمليه الاشتراك','msg' => 'تم الاشتراك بنجاح سوف يتم تنبيهك بكل ما هو جديد.'];
+       
+        return msg('success.save',['msg' => "تم الاشتراك بنجاح سوف يتم تنبيهك بكل ما هو جديد."]);
     }
     /**
     * Validating the request for the $subscribtion form

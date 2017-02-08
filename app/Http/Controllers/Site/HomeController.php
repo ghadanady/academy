@@ -10,6 +10,7 @@ use App\Instructor;
 use App\Slider;
 use App\Member;
 use App\News;
+use App\Comment;
 
 
 
@@ -26,12 +27,7 @@ class HomeController extends Controller
 
         //latest courses
         $latest_cources=Course::orderBy('created_at','desc')->Active()->get();
-        //courses count
-        $count_cources=count(Course::Active()->get());
-        //instactor count
-        $count_instructor=count(Instructor::Active()->get());
-        //student count
-        $count_member=count(Member::Active()->get());
+
         //certificate
         //all instractor
         $all_instructor=Instructor::Active()->get();
@@ -48,5 +44,21 @@ class HomeController extends Controller
                                                 'all_news',
                                                 'slider'
                                                 ));
+    }
+
+    public function getAbout()
+    {
+
+         $comments=Comment::limit(10)->get();
+        
+        return view('site.pages.about',compact('comments'));
+
+    }
+
+    public function getContact()
+    {
+        
+        return view('site.pages.contact');
+
     }
 }

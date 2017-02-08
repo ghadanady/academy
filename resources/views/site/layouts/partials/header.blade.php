@@ -1,6 +1,6 @@
   <header id="header">
                 <div class="container">
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="{{url('/')}}">
                         <i class="fa fa-graduation-cap"></i>
                         الأكاديمية
                     </a>
@@ -30,7 +30,7 @@
                     <div class="container-fluid">
                         <nav class="nav-main">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.html">الرئيسية</a></li>
+                                <li class="active"><a href="{{url('/')}}">الرئيسية</a></li>
                                 <li class="submenu">
                                     <a class="disable">
                                         الدورات
@@ -46,8 +46,8 @@
                                 </li>
                                 <li><a href="{{url('instructor')}}">المحاضرين</a></li>
                                 <li><a href="{{url('article')}}">المدونة</a></li>
-                                <li><a href="about.html">من نحن</a></li>
-                                <li><a href="contact.html">إتصل بنا</a></li>
+                                <li><a href="{{url('/about')}}">من نحن</a></li>
+                                <li><a href="{{url('/contact')}}">إتصل بنا</a></li>
                             </ul>                           
                         </nav>                        
                     </div><!--End Container-->

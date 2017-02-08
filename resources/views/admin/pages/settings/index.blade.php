@@ -148,6 +148,83 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">بلوك عن الموقع </h3>
+                <div class="box-tools pull-left">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+            <div class="row col-md-12">
+                <div class="form-group">
+                    <label for="youtube">عنوان البلوك الكبير </label>
+                    <input type="text" 
+                    placeholder="الأكاديمية نظام تعليمى متكامل " 
+                    class="form-control"  name="l_block_title"
+                    value="{{$settings->l_block_title}}">
+                </div>
+                <div class="form-group">
+                    <label for="youtube">محتوى  البلوك الكبير </label>
+                    <textarea 
+                    class="form-control" name="l_block_des"
+                    value="{{$settings->l_block_des}}"></textarea> 
+                </div>
+            </div>
+           <!--  end large block -->
+            <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="youtube">عنوان البلوك الصغير  </label>
+                        <input type="text" 
+                        placeholder="محاضرين ذو كفاءة" 
+                        class="form-control" " name="s_block1_title"
+                        value="{{$settings->s_block1_title}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="youtube">محتوى  البلوك الصغير  </label>
+                        <textarea 
+                        class="form-control" id="youtube" name="s_block1_des"
+                        value="{{$settings->s_block1_des}}"></textarea> 
+                    </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="youtube">عنوان البلوك الصغير  </label>
+                        <input type="text" 
+                        placeholder="محاضرين ذو كفاءة" 
+                        class="form-control" " name="s_block2_title"
+                        value="{{$settings->s_block2_title}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="youtube">شهادات معتمدة  </label>
+                        <textarea 
+                        class="form-control" id="youtube" name="s_block2_des"
+                        value="{{$settings->s_block2_des}}"></textarea> 
+                    </div>
+                    </div>
+
+                    </div> <!-- end row -->
+                    
+                </div>
+            </div>
+
+
+            </div><!-- end box body -->
+           
+
+            
+        
         <!-- /.box -->
         <div class="row">
             <div class="col-md-offset-3 col-md-6">

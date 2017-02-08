@@ -8,6 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="author" content="">
+        <meta name="contactNetworkAddress"CONTENT="{{ $settings->site_email }}">
+        <meta name="contactStreetAddress1"CONTENT="{{ $settings->site_address }}">
+        <meta name="contactPhoneNumber" CONTENT="{{ $settings->site_phone2 }}">
+        <meta name="contactPhoneNumber" CONTENT="{{ $settings->site_phone1 }}">
+        <meta name="contactPhoneNumber1" CONTENT="{{ $settings->site_phone1 }}">
+        <meta name="contactPhoneNumber2" CONTENT="{{ $settings->site_phone2 }}">
         
         <!-- Title Name
         ================================-->
@@ -15,7 +21,7 @@
 
         <!-- Fave Icons
         ================================-->
-        <link rel="shortcut icon" href="images/fav.png">
+        <link rel="shortcut icon" href="{{ $settings->getLogo() }}">
         
         <!-- Google Web Fonts 
 		===========================-->        
