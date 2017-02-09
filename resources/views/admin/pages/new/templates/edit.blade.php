@@ -18,7 +18,7 @@
                     </div>
 
 
-
+          
                     <div class="row">
                          <div class="form-group col-sm-12">
                             <label>العنوان </label>
@@ -57,6 +57,16 @@
                            </select>
                        </div>
                     </div>
+                    <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>حاله القسم</label>
+                        <select class="form-control" name="active">
+                            <option value="{active}">{activesta}</option>
+                            <option value="1"  >فعال</option>
+                            <option value="0"  >غير فعال</option>
+                        </select>
+                    </div>
+                    </div>
                      <div class="row">
                         <div class="form-group col-sm-12">
                             <label>المحتوى  </label>
@@ -64,3 +74,4 @@
                         </div>
                        
                     </div>
+                    <input type="hidden" value="{id}" name="id">

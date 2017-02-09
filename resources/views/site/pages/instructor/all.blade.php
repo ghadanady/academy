@@ -37,8 +37,12 @@
                      </ul>
                      @endif 
                      <div class="lecturers-fliter-items">
-@if(count($instructors)>0)
-@foreach($instructors as $i)
+ 
+ @php
+ //var_dump($instructores[1]);die();
+ @endphp
+@if(count($x)>0)
+@foreach($x as $i)
 
                                        <div class="col-md-3 col-sm-4">
                                             <div class="mix x{{$i->Category->id}}">

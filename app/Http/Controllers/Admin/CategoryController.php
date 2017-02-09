@@ -15,10 +15,10 @@ class CategoryController extends Controller
     public function getIndex($type){
         switch ($type) {
             case 'main':
-            $categories = Category::where('parent_id' , 0)->paginate(10);
+            $categories = Category::where('parent_id' , 0)->paginate(5);
             return view('admin.pages.categories.main-categories.index' , compact('categories'));
             case 'sub':
-            $categories = Category::where('parent_id' ,'<>', 0)->paginate(10);
+            $categories = Category::where('parent_id' ,'<>', 0)->paginate(5);
             return view('admin.pages.categories.sub-categories.index' , compact('categories'));
             default:
             abort(404);
@@ -143,22 +143,7 @@ class CategoryController extends Controller
         $category->active = $request->active;
         $category->name = $request->name;
 
-        // validate if there's an image remove the old one and  save the new one.
-        $destination = storage_path('uploads/images/category');
-        if($request->avatar){
-
-            $avatar = microtime(time()) . "_" . $request->avatar->getClientOriginalName();
-
-            if($category->image){
-                @unlink("{$destination}/{$user->image->name}");
-            }
-
-            $category->image()->updateOrCreate([],[
-                'name' => $avatar
-            ]);
-
-            $request->avatar->move($destination,$avatar);
-        }
+ 
 
         if($category->save()){
 
@@ -375,89 +360,12 @@ class CategoryController extends Controller
     }
 
 
-    public function postChange($type, $id , Request $request)
-    {
-        $category = Category::find($id);
 
-        switch($type){
-            case 'main':
-            return $this->changeMainCategory($request,$category);
-            case 'sub':
-            return $this->changeSubCategory($request,$category);
-        }
 
-    }
 
-    /**
-    * Edit main category.
-    *
-    * @param  Request  $request  [description]
-    * @param  Category $category [description]
-    * @return [type]             [description]
-    */
-    protected function changeMainCategory(Request $request , $category)
-    {
-        if(!$category){
-            return back()->withError('لا يوجد هناك قسم بهذا الاسم ليتم تعديله.');
-        }
 
-        if(!$category->isMain()){
-            return back()->withError('لا يوجد هناك قسم رئيسي يطابق هذه البيانات.');
-        }
+    
 
-        if(!$request->parent_id){
-            return back()->withError('التصنيف الرئيسي لا يمكن ان يكون فارغ.');
-        }
-
-        if($category->id == $request->parent_id){
-            return back()->withWarning('التصنيف لايمكن ان يكون فرعي من نفسه.');
-        }
-
-        $category->parent_id = $request->parent_id;
-
-        if($category->save()){
-            return back()->withSuccess('تم تعيين القسم بنجاح.');
-        }
-
-        return back()->withWarning('تم فشل عمليه التعيين . حاول مره لاحقه.');
-    }
-
-    /**
-    * Edit sub category.
-    *
-    * @param  Request  $request  [description]
-    * @param  Category $category [description]
-    * @return [type]             [description]
-    */
-    protected function changeSubCategory(Request $request , $category)
-    {
-        if(!$category->isSub()){
-            return [
-                'status' => 'error',
-                'title' => 'بيانات خاظئه',
-                'msg' => 'لا يوجد هناك قسم فرعي يطابق هذه البيانات',
-                'content' => '',
-            ];
-        }
-
-        $category->parent_id = 0;
-
-        if($category->save()){
-            return [
-                'status' => 'success',
-                'title' => 'نجاح',
-                'msg' => 'تم تعيين القسم بنجاح.',
-                'content' => '',
-            ];
-        }
-
-        return [
-            'status' => 'warning',
-            'title' => 'فشل',
-            'msg' => 'تم فشل عمليه التعيين . حاول مره لاحقه.',
-            'content' => '',
-        ];
-    }
 
     protected function generateSlug($title)
     {

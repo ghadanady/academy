@@ -2,7 +2,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            <label>العنوان الول  </label>
+                            <label>العنوان الاول   </label>
                             <input type="text" class="form-control required" placeholder="www.google.com.eg"   value="{title}" name="title">
                         </div>
                        

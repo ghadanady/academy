@@ -77,4 +77,7 @@ class Course extends Model
         return $this->morphMany('App\Comment', 'commentable');
     }
 
+
+  
+
 }

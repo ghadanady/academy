@@ -121,7 +121,7 @@
                 <div class="form-group">
                     <input class="form-control"  name="cpassword"  placeholder="تاكيد الرقم السرى" type="password">
                 </div><!--End form-group-->
-                <button type="button" class=" registerBTN custom-btn">تسجيل </button>
+                <button type="button" class="registerLoginBTN custom-btn">تسجيل </button>
             </form><!--End dialog-form-->
             <div class="dont-have">
                 لديك حساب بالفعل ..
@@ -154,6 +154,7 @@
         {{ Html::script('assets/vendor/count-to/jquery.countTo.js') }}
         {{ Html::script('assets/vendor/mixitup/jquery.mixitup.js') }}
         {{ Html::script('assets/js/toastr.min.js') }}
+         <script async src="https://static.addtoany.com/menu/page.js"></script>
         
 
 

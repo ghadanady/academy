@@ -30,6 +30,7 @@ class Instructor extends Model
         "gender",
         "age",
         "cat_id",
+        "active"
 
     ];
 
@@ -37,6 +38,7 @@ class Instructor extends Model
     
     public function getUrl()
     {
+          
 
         return route('site.instructor.index',['slug'=> $this->slug]);
 

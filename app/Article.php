@@ -19,7 +19,6 @@ class Article extends Model
          'slug',
          "cat_id",
          "ins_id",
-         "lecture_number",
          "active",
          'view'
 

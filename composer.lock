@@ -4,9 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "300076f57a275a93146d6cb80e2432c7",
-    "content-hash": "4aba34cd69646e8856ef9aa6e4d655c5",
+    "hash": "d1e05fbfb22b6c0e7df59b9988b145a2",
+    "content-hash": "163668b18aade9fb284bd4b7a96ab0e1",
     "packages": [
+        {
+            "name": "chencha/share",
+            "version": "5.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prodeveloper/social-share.git",
+                "reference": "c25fff7eaac8352df0195ead424de28335464303"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prodeveloper/social-share/zipball/c25fff7eaac8352df0195ead424de28335464303",
+                "reference": "c25fff7eaac8352df0195ead424de28335464303",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": ">=5.3",
+                "mockery/mockery": "^0.9.4",
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Chencha\\Share": "src/"
+                },
+                "classmap": [
+                    "tests/TestCase.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "thujohn",
+                    "email": "jonathan.thuau@gmail.com"
+                },
+                {
+                    "name": "chencha",
+                    "email": "jacob@chenchatech.com"
+                },
+                {
+                    "name": "datashaman",
+                    "email": "marlinf@datashaman.com"
+                }
+            ],
+            "description": "Share links with Laravel 5",
+            "keywords": [
+                "laravel",
+                "laravel5",
+                "share"
+            ],
+            "time": "2016-03-24 08:05:57"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.1.0",
@@ -160,6 +218,124 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "faustbrian/laravel-service-provider",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/faustbrian/Laravel-Service-Provider.git",
+                "reference": "2bdd7f1974f33b9bcfd094c7dfc7dfcffb349c23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/faustbrian/Laravel-Service-Provider/zipball/2bdd7f1974f33b9bcfd094c7dfc7dfcffb349c23",
+                "reference": "2bdd7f1974f33b9bcfd094c7dfc7dfcffb349c23",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
+                "php": "^5.5 || ^7.0"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "^3.1",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BrianFaust\\ServiceProvider\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de",
+                    "homepage": "https://brianfaust.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "DRY Service Provider for Laravel 5 Packages",
+            "keywords": [
+                "Brian Faust",
+                "Laravel Messageable",
+                "faustbrian",
+                "framework",
+                "laravel",
+                "laravel-messageable",
+                "laravel-service-provider"
+            ],
+            "time": "2016-11-22 06:58:27"
+        },
+        {
+            "name": "faustbrian/laravel-social-share",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/faustbrian/Laravel-Social-Share.git",
+                "reference": "9e9012fa2561ad08f633c88a15c461ce1e06ad56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/faustbrian/Laravel-Social-Share/zipball/9e9012fa2561ad08f633c88a15c461ce1e06ad56",
+                "reference": "9e9012fa2561ad08f633c88a15c461ce1e06ad56",
+                "shasum": ""
+            },
+            "require": {
+                "faustbrian/laravel-service-provider": "^1.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "^3.1",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BrianFaust\\SocialShare\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de",
+                    "homepage": "https://brianfaust.de",
+                    "role": "Developer"
+                }
+            ],
+            "keywords": [
+                "Brian Faust",
+                "Laravel Social Share",
+                "faustbrian",
+                "framework",
+                "laravel",
+                "laravel-social-share"
+            ],
+            "time": "2016-11-04 04:34:56"
         },
         {
             "name": "jakub-onderka/php-console-color",

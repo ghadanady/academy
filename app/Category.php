@@ -13,7 +13,7 @@ class Category extends Model {
     }
     public function isMain()
     {
-        return $this->parent_id == 0 && !$this->subCategories->isEmpty();
+        return $this->parent_id == 0 ;
 
     }
 
@@ -45,9 +45,6 @@ class Category extends Model {
         return $this->belongsTo('App\Category' ,'parent_id');
     }
 
-    public function subCategories()
-    {
-        return $this->hasMany('App\Category' ,'parent_id');
-    }
+
 
 }

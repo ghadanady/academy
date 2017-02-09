@@ -14,11 +14,15 @@ class Instructorontroller extends Controller
      *
      * @return string
      */
-    public function index($slug=null , Request $request=null) {
+    public function index() {
     	
 
-            $instructors = Instructor::paginate(15);
-           return view('site.pages.instructor.all', compact('instructors'));
+           $x = Instructor::where('active','1')->get();
+           //dd($x);
+           foreach ($x as $key => $value) {
+            // dd($value['name']);
+           }
+           return view('site.pages.instructor.all',compact('x'));
         
     }
 

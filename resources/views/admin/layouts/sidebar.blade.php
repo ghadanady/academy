@@ -1,5 +1,5 @@
 <!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar .right-side">
+<aside class="main-sidebar .right-side" style="min-height: 1200px;">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -41,7 +41,7 @@
 
                  <li class="treeview">
                     <a href="{{url('admin/slider')}}">
-                        <i class="fa fa-dashboard"></i> <span>الاسلسدر   </span>
+                        <i class="fa fa-dashboard"></i> <span>الاسليدر    </span>
                     </a>
                 </li>
                  <li class="treeview">
@@ -73,6 +73,21 @@
                         <i class="fa fa-dashboard"></i> <span>الاخبار  </span>
                     </a>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span>الرسائل و الاشتركات</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('admin.contacts.index') }}"><i class="fa fa-circle-o"></i>عرض الرسائل</a>
+                        </li>
+                        <li><a href="{{ route('admin.subscribtions.index') }}"><i class="fa fa-circle-o"></i>عرض الاشتركات</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+ 
               
             @endif
         </li>

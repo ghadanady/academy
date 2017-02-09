@@ -77,6 +77,7 @@ class NewsController extends Controller
         $a->cat = $a->Category->name;
         $a->ins = $a->instarctor->name;
         $a->img = $a->image ? $a->image->name : 'default.jpg';
+        $a->activesta= $a->active? 'فعال ' : 'غير فعال' ;
 
         if(!$a){
             return  ['status' => false, 'data' => 'There is no user with id #'.$id.'.'];
@@ -132,6 +133,7 @@ class NewsController extends Controller
         // set the new values for update
         $a->name = $r->name;
         $a->body = $r->body;
+        $a->active = $r->active;
 
         // validate if there's an image remove the old one and  save the new one.
         $destination = storage_path('uploads/images/new');

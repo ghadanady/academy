@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
         }
 
-        $courses = Course::where('cat_id',$category->id)->Active()->get(); 
+        $courses = Course::where('cat_id',$category->id)->Active()->paginate(8); 
 
         if(empty($courses)){
             abort(404);

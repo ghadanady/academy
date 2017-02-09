@@ -265,7 +265,9 @@
                                 <div class="author-info">
                                     <a href="only-lecturer.html">{{$course->instarctor->name}}</a>
                                     <p>
-                                       {!!$course->instarctor->about!!}
+                                       
+
+                                       {!!str_limit($course->instarctor->about,100)!!}
                                     </p>
                                 </div>
                             </div><!--End Widget-content-->
@@ -345,7 +347,8 @@
                                 <div class="item-list-details">
                                         <a href="only-course.html">{{$c->name}}</a>
                                         <p>
-                                           {!!$c->body!!}
+                                           
+                                            {!!str_limit($c->body,30)!!}
                                         
                                         </p>
                                 </div>

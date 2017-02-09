@@ -42,7 +42,6 @@ class AuthController extends Controller
 
         if ($v->fails()) {
             return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
-            // return redirect()->back()->withErrors(['خطأ', implode('<br>', $v->errors()->all())]);
         }
 
         // grapping Member credentials
@@ -51,6 +50,7 @@ class AuthController extends Controller
 
         // Searching for the Member matches the passed email
         $member= Member::where('email' ,$email)->first();
+        
         if( $member && Hash::check($password, $member->password) ){
             // login the Member
             Auth::guard('members')->login($member ,$r->has('remember'));
@@ -59,7 +59,8 @@ class AuthController extends Controller
         }
         // failed
          return msg('error.save',['msg' => "من فضلك ادخل بيانات صحيحه"]);
-            // return redirect()->back()->withErrors(['خطأ', implode('<br>', $v->errors()->all())]);
+          
+          ;
     }
 
     public function getLogout(){

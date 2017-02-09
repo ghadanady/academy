@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{ trans('admin_global.users_edit_header') }}</h4>
+                <h4 class="modal-title">تعديل </h4>
             </div>
             <form action="{{url('admin/slider/edit')}}" class="ajax-form" enctype="multipart/form-data" method="post"
              onsubmit="return false;">

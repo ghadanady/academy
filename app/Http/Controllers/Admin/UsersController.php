@@ -106,9 +106,9 @@ class UsersController extends Controller {
                 $r->avatar->move($destination,$avatar);
             }
 
-            return msg('success.save',['msg' => 'User created successfully.']);
+            return msg('success.save',['msg' => 'تم اضافه المستخدم بنجاح']);
         }
-        return msg('error.save',['msg' => 'There\'re some errors, please try again later.']);
+        return msg('error.save',['msg' => 'حدث خطأ اثناء لاضافه ']);
     }
 
     /**
@@ -130,9 +130,8 @@ class UsersController extends Controller {
             "role_id" => 'numeric',
             "avatar" => 'image|mimes:png,gif,jpg,jpeg|max:20000',
             "email" => 'required|email|unique:users,email,'.Auth::id(),
-            "password" => 'password|required',
-            "newpassword" => 'password|min:8',
-            "repassword" => 'same:newpassword',
+            "password" => 'required|password|min:8',
+            "repassword" => 'required|same:password',
         ]);
 
 
@@ -210,9 +209,9 @@ class UsersController extends Controller {
 
         // update the user data in the database.
         if ($user->save()) {
-            return msg('success.edit',['msg' => 'User updated successfully.']);
+            return msg('success.edit',['msg' => 'تم تحديث البيانات بنجاح ']);
         }
-        return msg('error.edit',['msg' => 'There\'re some errors, please try again later.']);
+        return msg('error.edit',['msg' => 'حدث خطأ اثناء التعديل ']);
     }
     /**
      * Validate and update user that has the passed id.
@@ -311,9 +310,9 @@ class UsersController extends Controller {
 
         // update the user data in the database.
         if ($user->save()) {
-            return msg('success.edit',['msg' => 'User updated successfully.']);
+            return msg('success.edit',['msg' => 'تم التعديل بنجاح ']);
         }
-        return msg('error.edit',['msg' => 'There\'re some errors, please try again later.']);
+        return msg('error.edit',['msg' => 'حدث خطأ اثناء التعديل ']);
     }
 
     public function postInfo($id)

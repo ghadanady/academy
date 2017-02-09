@@ -38,11 +38,17 @@ class ArticleController extends Controller
 
         $v = validator($r->all(), [
             "name" => 'required',
+            "cat_id" => 'required',
+            "ins_id" => 'required',
+            "editor1" => 'required',
             "avatar" => 'image|mimes:png,gif,jpg,jpeg|max:20000',
         ]);
         // setting custom attribute names
         $v->setAttributeNames([
             "name" => "قم بادخال عنوان المقال",
+            "cat_id" => " قم باختيار  القسم ",
+            "ins_id" => "قم باختيار المحاضر ",
+            "editor1" => "قم بادخال محتوى المقال",
 
         ]);
 
@@ -52,9 +58,11 @@ class ArticleController extends Controller
         }
 
         $a = new Article($r->except(['_token']));
+        //dd($r->except(['_token']));
          $a->slug= $this->generateSlug($r->name);
+         $a->body= $r->editor1;
 
-        // save the new Trademarkdata
+        // save the new article
         if ($a->save()) {
 
             // validate if there's an image to save it
@@ -82,6 +90,8 @@ class ArticleController extends Controller
             return  ['status' => false, 'data' => 'There is no user with id #'.$id.'.'];
         }
       $a->img = $a->image ? $a->image->name : 'default.jpg';
+      $a->cat = $a->Category->name;
+      $a->in = $a->instarctor->name;
 
         return  ['status' => true, 'data' => $a];
     }
@@ -111,7 +121,7 @@ class ArticleController extends Controller
 
         $a= Article::find($r->id);
 
-        if(!$trademark){
+        if(!$a){
             return msg('error.edit',['msg' => 'لا يوجد اعلات '.$r->id.'.']);
         }
 
@@ -150,7 +160,7 @@ class ArticleController extends Controller
             $r->avatar->move($destination,$avatar);
         }
 
-        // update the Trademarkdata in the database.
+        // update the article in the database.
         if ($a->save()) {
             return msg('success.edit',['msg' => 'تم التعديل بنجاح']);
         }
@@ -158,7 +168,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * delete a Trademarkaccount if its id is passed
+     * delete a artice if its id is passed
      * if not it will delete the current user
      * @param  int $id
      * @return Redirect

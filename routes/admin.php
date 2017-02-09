@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::post('/edit', 'CourseController@postEdit');
             Route::get('/add', 'CourseController@getAdd')->name('admin.courses.add');
             Route::post('/add', 'CourseController@postAdd');
-            Route::post('/info/{id}', 'CourseController@postInfo');
+            Route::get('/info/{id}', 'CourseController@postInfo');
             Route::get('/edit', 'CourseController@getEdit');
             Route::post('/edit', 'CourseController@postEdit');
         });
@@ -155,6 +155,22 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::get('/delete/{id}', 'ContactController@getDelete')->name('admin.contacts.delete');
             Route::get('/filter/{filter}', 'ContactController@getFilter');
             Route::get('/search/{q?}', 'ContactController@getSearch');
+        });
+
+        /**
+        * subscribtions routes
+        */
+        Route::group(['prefix' => 'subscribtions'], function () {
+            Route::get('/', 'SubscribtionController@getIndex')->name('admin.subscribtions.index');
+            Route::get('view/{id}', 'SubscribtionController@getView')
+            ->name('admin.subscribtions.view');
+            Route::post('/send', 'SubscribtionController@postSend')
+            ->name('admin.subscribtions.send');
+            Route::post('/action/{action}', 'SubscribtionController@postAction');
+            Route::get('/delete/{id}', 'SubscribtionController@getDelete')
+            ->name('admin.subscribtions.delete');
+            Route::get('/filter/{filter}', 'SubscribtionController@getFilter');
+            Route::get('/search/{q?}', 'SubscribtionController@getSearch');
         });
 
 

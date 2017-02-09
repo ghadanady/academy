@@ -16,7 +16,7 @@ class ArticleController extends Controller
     public function index($slug=null , Request $request=null) {
     	
 
-            $articles = Article::paginate(15);
+            $articles = Article::paginate(8);
            return view('site.pages.article.all', compact('articles'));
         
     }

@@ -175,22 +175,7 @@ $star_rating.on("click", function() {
      * login instractor 
      **************************************************************************/
  
-     $('.loginBTN').click(function(){
-        
-            var form= $(this).closest('form')
-           var action =form.attr('action');
-
-        $.ajax({
-            url: action,
-            type:'POST',
-            data:form.serialize(),
-            success:function(data)
-            {
-                toastr.error(data.msg, 'Inconceivable!');
-            }
-
-        });
-    })
+ 
 
 
     /***************************************************************************
@@ -208,19 +193,17 @@ $star_rating.on("click", function() {
             data:form.serialize(),
             success:function(data)
             {
+                $('.msg').html(data.msg);
                 if(data.status=='error')
                 {
                  $('.msg').addClass('alert alert-danger');
+                 
                 }else{
                  $('.msg').addClass('alert alert-success');
+                // $('.msg').html(data.msg);
                  location.reload();
                 }
-                
-
-                
-                $('.msg').html(data.msg);
-               
-
+    
             }
 
         });
@@ -325,6 +308,9 @@ $star_rating.on("click", function() {
 
             });
         });
+
+
+   
      
 
     

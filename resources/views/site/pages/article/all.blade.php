@@ -51,7 +51,8 @@
                   {{$a->Category->name}}
                 </li>
               </ul><!--End Info-->
-              {!! $a->body!!}
+              
+              {!!str_limit($a->body,100)!!}
             </div><!--End Blog-content-->
           </div><!--End Blog-item-->
         </div>
@@ -61,10 +62,9 @@
       </div>
       <div class="col-sm-12">
         <ul class="pagination-wrapper">
-          <li class="active"><a href="">1</a></li>
-          <li><a href="">2</a></li>
-          <li><a href="">3</a></li>
-          <li><a href=""><i class="fa fa-angle-left"></i> </a></li>
+
+          {{ $articles->links() }}
+
         </ul>
       </div>
       @else

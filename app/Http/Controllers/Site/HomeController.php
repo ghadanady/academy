@@ -37,9 +37,6 @@ class HomeController extends Controller
 
         
         return view('site.pages.index',compact('latest_cources',
-                                                'count_cources',
-                                                'count_instructor',
-                                                'count_member',
                                                 'all_instructor',
                                                 'all_news',
                                                 'slider'

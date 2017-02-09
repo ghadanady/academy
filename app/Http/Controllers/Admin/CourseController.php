@@ -34,9 +34,9 @@ class CourseController extends Controller
      * @return string
      */
     public function getAdd(){
-    	$categories=Category::all();
-    	$instructores=Instructor::all();
-        return view('admin.pages.courses.add',compact('categories','instructores'));
+    	//$categories=Category::all();
+    	//$instructores=Instructor::all();
+        return view('admin.pages.courses.add');
     }
 
     /**
@@ -47,12 +47,15 @@ class CourseController extends Controller
      */
     public function postAdd(Request $r) {
 
+
+
         $v = validator($r->all(), [
             "name" => 'required|min:2',
             "lecture_number" => 'required',
             "student_number" => 'required',
             "time" => 'required',
             "period" => 'required',
+            //"body" => 'required',
             
         ],
         [
@@ -62,6 +65,7 @@ class CourseController extends Controller
         "time.required"=>"من فضللك ادخل ميعلد الدورة",
         "lecture_number.required"=>"من فضللك ادخل عدد المحاضرات ",
         "student_number.required"=>"من فضللك ادخل عدد الطلاب",
+        //"body.required"=>"قم باخال نبذه عن الكورس",
         
 
         ]
@@ -81,6 +85,10 @@ class CourseController extends Controller
         $course = new Course($r->except(['_token']));
         $course->slug= $this->generateSlug($r->name);
         $course->lessons= json_encode($r->q);
+        $course->body= $r->editor1;
+        $course->lessons_learned= $r->editor2;
+        $course->aim= $r->editor3;
+        
 
 
         // save the new user data
@@ -114,109 +122,6 @@ class CourseController extends Controller
     }
 
     /**
-     * Validate and update current user.profile.
-     *
-     * @param  Request $r
-     * @return json
-     */
-    public function postProfile(Request $r) {
-
-        $v = validator($r->all(), [
-            "name" => 'required|min:2',
-            "username" => 'required|min:2|unique:users,username,'.Auth::id(),
-            "gender" => 'required',
-            "job" => 'required|min:2',
-            "address" => 'required|min:2',
-            "phone" => 'required|min:10|numeric',
-            "national_id" => 'required|min:14|numeric',
-            "role_id" => 'numeric',
-            "avatar" => 'image|mimes:png,gif,jpg,jpeg|max:20000',
-            "email" => 'required|email|unique:users,email,'.Auth::id(),
-            "password" => 'password|required',
-            "newpassword" => 'password|min:8',
-            "repassword" => 'same:newpassword',
-        ]);
-
-
-        // setting custom attribute names
-        $v->setAttributeNames([
-            "name" => trans('admin_global.users_name'),
-            "username" => trans('admin_global.users_username'),
-            "email" => trans('admin_global.users_email'),
-            "gender" => trans('admin_global.users_gender'),
-            "job" => trans('admin_global.users_job'),
-            "national_id" => trans('admin_global.users_national'),
-            "phone" => trans('admin_global.users_phone'),
-            "address" => trans('admin_global.btn_attach'),
-            "avatar" => trans('admin_global.btn_attach'),
-            "password" => trans('admin_global.users_password'),
-            "repassword" => trans('admin_global.users_repassword'),
-        ]);
-
-
-        // if the validation has been failed return the error msgs
-        if ($v->fails()) {
-            return msg('error.edit',['msg' => implode('<br>', $v->errors()->all())]);
-        }
-
-        // if the new password isn't empty make sure that its confirmation not empty
-        if(!empty($r->newpassword) && empty($r->repassword)){
-            return msg('error.edit',['msg' => trans('admin_global.validation_repassword')]);
-        }
-
-
-        $user = Auth::user();
-        // check if the password is correct
-        if(!Hash::check($r->password , $user->password)){
-            return msg('error.edit',['msg' => 'The password is incorrect.']);
-        }
-
-        // if there's new password update it and if not keep the old one
-        if(!empty($r->newpassword)){
-            $r->password = bcrypt($r->newpassword);
-        }else {
-            $r->password = $user->password;
-        }
-
-        // set the new values for update
-        $user->name = $r->name;
-        $user->email = $r->email;
-        $user->username = $r->username;
-        $user->gender = $r->gender;
-        $user->age = $r->age;
-        $user->phone = $r->phone;
-        $user->job = $r->job;
-        $user->address = $r->address;
-        $user->password = $r->password;
-        $user->national_id = $r->national_id;
-
-        if($user->isAdmin() && $r->role_id){
-            $user->role_id = $r->role_id;
-        }
-
-        // validate if there's an image remove the old one and  save the new one.
-        $destination = storage_path('uploads/images/avatars');
-        if($r->avatar){
-
-            if($user->image){
-                @unlink("{$destination}/{$user->image->name}");
-            }
-
-            $avatar = microtime(time()) . "_" . $r->avatar->getClientOriginalName();
-            $user->image()->updateOrCreate([],[
-                'name' => $avatar
-            ]);
-
-            $r->avatar->move($destination,$avatar);
-        }
-
-        // update the user data in the database.
-        if ($user->save()) {
-            return msg('success.edit',['msg' => 'User updated successfully.']);
-        }
-        return msg('error.edit',['msg' => 'There\'re some errors, please try again later.']);
-    }
-    /**
      * Validate and update user that has the passed id.
      *
      * @param  Request $r
@@ -224,87 +129,71 @@ class CourseController extends Controller
      */
     public function postEdit(Request $r) {
 
-        if(!$r->id){
-            return msg('error.edit',['msg' => 'The user id is required.']);
+ 
+
+        $course = Course::find($r->id);
+
+        if(!$course){
+            return msg('error.edit',['msg' => 'لا يوجد ]دورة  '.$r->id.'.']);
         }
 
-        $user = User::find($r->id);
 
-        if(!$user){
-            return msg('error.edit',['msg' => 'There is no user with id #'.$r->id.'.']);
-        }
 
         $v = validator($r->all(), [
             "name" => 'required|min:2',
-            "username" => 'required|min:2|unique:users,username,'.$user->id,
-            "gender" => 'required',
-            "job" => 'required|min:2',
-            "address" => 'required|min:2',
-            "phone" => 'required|min:10|numeric',
-            "national_id" => 'required|min:14|numeric',
-            "role_id" => 'numeric',
-            "avatar" => 'image|mimes:png,gif,jpg,jpeg|max:20000',
-            "email" => 'required|email|unique:users,email,'.$user->id,
-            "newpassword" => 'min:8',
-            "repassword" => 'same:newpassword',
+            "lecture_number" => 'required',
+            "student_number" => 'required',
+            "time" => 'required',
+            "period" => 'required',
         ]);
 
         // setting custom attribute names
+        
         $v->setAttributeNames([
-            "name" => trans('admin_global.users_name'),
-            "username" => trans('admin_global.users_username'),
-            "email" => trans('admin_global.users_email'),
-            "gender" => trans('admin_global.users_gender'),
-            "job" => trans('admin_global.users_job'),
-            "national_id" => trans('admin_global.users_national'),
-            "phone" => trans('admin_global.users_phone'),
-            "address" => trans('admin_global.btn_attach'),
-            "avatar" => trans('admin_global.btn_attach'),
-            "password" => trans('admin_global.users_password'),
-            "repassword" => trans('admin_global.users_repassword'),
+           "name.required"=>"من فضللك ادخل اسم الدورة",
+           "time.required"=>"من فضللك ادخل ميعلد الدورة",
+           "period.required"=>"من فضللك ادخل مدة الدورة",
+           "lecture_number.required"=>"من فضللك ادخل عدد المحاضرات ",
+           "student_number.required"=>"من فضللك ادخل عدد الطلاب",
         ]);
 
         // if the validation has been failed return the error msgs
         if ($v->fails()) {
-            return msg('error.edit',['msg' => implode('<br>', $v->errors()->all())]);
+            return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
         }
 
-        // if the new password isn't empty make sure that its confirmation not empty
-        if(!empty($r->newpassword) && empty($r->repassword)){
-            return msg('error.edit',['msg' => trans('admin_global.validation_repassword')]);
-        }
 
-        // if there's new password update it and if not keep the old one
-        if(!empty($r->newpassword)){
-            $r->password = bcrypt($r->newpassword);
-        }else {
-            $r->password = $user->password;
-        }
+    
+       $course->name= $r->name;
+       $course->body= $r->body;
+       $course->cat_id= $r->cat_id;
+       $course->instarctor_id= $r->instarctor_id;
+       $course->lecture_number= $r->lecture_number;
+       $course->student_number= $r->student_number;
+       $course->time= $r->time;
+       $course->lessons= json_encode($r->q);
+       $course->period= $r->period;
+       $course->lessons_learned= $r->lessons_learned;
+       $course->aim= $r->aim;
+       $course->active= $r->active;
+       $course->body= $r->editor1;
+       $course->lessons_learned= $r->editor2;
+       $course->aim= $r->editor3;
+ 
+ 
 
-        // set the new values for update
-        $user->name = $r->name;
-        $user->email = $r->email;
-        $user->username = $r->username;
-        $user->gender = $r->gender;
-        $user->age = $r->age;
-        $user->phone = $r->phone;
-        $user->job = $r->job;
-        $user->address = $r->address;
-        $user->password = $r->password;
-        $user->national_id = $r->national_id;
-        $user->role_id = $r->role_id;
 
         // validate if there's an image remove the old one and  save the new one.
-        $destination = storage_path('uploads/images/avatars');
+        $destination = storage_path('uploads/images/course');
         if($r->avatar){
 
             $avatar = microtime(time()) . "_" . $r->avatar->getClientOriginalName();
 
-            if($user->image){
-                @unlink("{$destination}/{$user->image->name}");
+            if($course->image){
+                @unlink("{$destination}/{$course->image->name}");
             }
 
-            $user->image()->updateOrCreate([],[
+            $course->image()->updateOrCreate([],[
                 'name' => $avatar
             ]);
 
@@ -312,25 +201,21 @@ class CourseController extends Controller
         }
 
         // update the user data in the database.
-        if ($user->save()) {
-            return msg('success.edit',['msg' => 'User updated successfully.']);
+        if ($course->save()) {
+            return msg('success.edit',['msg' => 'تم نعديل  بيانات الدورة بنجاح ']);
         }
         return msg('error.edit',['msg' => 'There\'re some errors, please try again later.']);
     }
 
     public function postInfo($id)
     {
-        $user = User::find($id);
+        $course = Course::find($id);
+        if($course->lessons_learned) $course->lessons_learned=explode('-',$course->lessons_learned);
+        if($course->aim) $course->aim=explode('-',$course->aim);
+        if($course->lessons) $course->lessons=json_decode($course->lessons,true);
+        $lessons_count=count($course->lessons['qtitle']);
 
-        if(!$user){
-            return  ['status' => false, 'data' => 'There is no user with id #'.$id.'.'];
-        }
-
-        $user->gender_text = ($user->gender === 'male') ? 'ذكر' : 'انثي';
-        $user->alias = $user->role->alias;
-        $user->avatar = $user->image ? $user->image->name : 'default.jpg';
-
-        return  ['status' => true, 'data' => $user];
+         return view('admin.pages.courses.edit',compact('course','relatedCources','lessons_count'));
     }
     /**
      * delete a user account if its id is passed
@@ -345,17 +230,17 @@ class CourseController extends Controller
             Auth::logout();
         }
 
-        $user = User::find($id);
+        $course = Course::find($id);
 
-        if(!$user){
+        if(!$course){
             return redirect()->back()->with('m', 'User with id #'.$id.' not found');
         }
 
-        if(!empty($user->image)){
+        if(!empty($course->image)){
             @unlink(storage_path('uploads/images/avatars' . $user->image->name));
         }
 
-        $user->delete();
+        $course->delete();
         return redirect()->back()->with('m', 'User has been deleted successfully');
     }
 

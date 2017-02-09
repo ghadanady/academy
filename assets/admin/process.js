@@ -9,7 +9,16 @@
 
    
 
+    /***************************************************************************
+     * remove_lesson 
+     **************************************************************************/
 
+      $('.remove_lesson').click(function(){
+        
+         var lesson= $(this).closest('section') 
+         console.log(lesson)       
+             lesson.remove();
+     });
 
 
     
@@ -24,10 +33,38 @@
     * add question 
     **************************************************************************/
 
+
     $('.addQuestion').click(function(){
 
+        
         var q=$('.question').html();
+       
         $('.allQuestion').append(q);
+    })
+
+    $('.addQuestion2').click(function(){
+
+        var html='<div class="alert alert-info" >'+
+                 '<div class="row " >'+               
+                 '<div class="form-group col-md-12">'+
+                 '<label > عنوان الدرس  </label>'+
+                 '<input class="form-control" '+ 
+                 ' placeholder="مثال:  الدرس الاول | مقدمة "'+
+                 ' type="text"  name="q[qtitle][]">'+
+                 '</div></div> <div class="row">'+
+                 '<div class="form-group col-md-12">'+
+                 '<label > وصف الدرس </label>'+
+                 '<textarea class="form-control" style="height: 100px" '+
+                  'class="form-control tiny-editor"'+
+                  'name="q[qbody][]" rows="3" >'+
+                  '</textarea></div></div>'+
+                  '<div class="form-group col-md-12" >'+
+                  '<button class="btn btn-danger remove_lesson" '+
+                  'type="button">حذف </button>'+
+                  '</div> </div>';
+        //var q=$('.question').html();
+       
+        $('.allQuestion').append(html);
     })
 
 

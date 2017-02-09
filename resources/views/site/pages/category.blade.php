@@ -61,20 +61,17 @@
                                 </ul>
                             </div><!--End Heading-->
                             <div class="course-details">
-                        {!!$c->body!!}
+                       
+                        {!!str_limit($c->body,70)!!}
 
                             </div><!--End Course-content-->
                             <div class="course-info">
                                 <div class="comment-status">
                                     <i class="fa fa-commenting-o"></i>
-                                   24 تعليق 
+                                   {{count($c->comments)}} تعليق 
                                 </div>
                                 <ul class="rate">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
+                                    {{ $courses->links() }}
                                 </ul>
                             </div><!--End Course-info-->
                         </div><!--End Course-content-->

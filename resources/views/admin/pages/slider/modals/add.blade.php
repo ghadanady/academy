@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">اضافة اعلان </h4>
+                <h4 class="modal-title">اضافة  </h4>
             </div>
             <form action="{{url('admin/slider/add')}}" class="ajax-form" enctype="multipart/form-data" method="post"
              onsubmit="return false;">
@@ -14,14 +14,15 @@
                     <div class="row">
                         <div class="form-group col-sm-12">
                             <label>العنوان الاول  </label>
-                            <input type="text" class="form-control required" placeholder="www.google.com.eg"  name="title">
+                            <input type="text" class="form-control required" 
+                            placeholder="دورة قواعد البيانات المتقدمة "  name="title">
                         </div>
                        
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
                             <label>العنوان الثاى  </label>
-                            <input type="text" class="form-control required" placeholder="www.google.com.eg"  name="sub_title">
+                            <input type="text" class="form-control required" placeholder="دورة قواعد البيانات المتقدمة "  name="sub_title">
                         </div>
                        
                     </div>

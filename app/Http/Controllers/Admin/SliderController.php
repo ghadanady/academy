@@ -19,7 +19,7 @@ class SliderController extends Controller
         if(auth()->user()->isNormal()){
             return redirect('admin')->withWarning(trans('admin_global.denied_page'));
         }
-        $imgs = Slider::paginate(15);
+        $imgs = Slider::paginate(5);
         return view('admin.pages.slider.all', compact('imgs'));
     }
 

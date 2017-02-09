@@ -45,13 +45,13 @@
                                                 <td>{{$u->Category->name}}</td>
                                                 <td>{{$u->created_at}}</td>
                                                 <td class="text-center">
-                                                    <button data-url="{{url('admin/courses/info/'.$u->id)}}" class="users-edit-modal-btn btn btn-primary" data-original="">
+                                                    <a 
+                                                    href="{{url('admin/cources/info/'.$u->id)}}" class=" btn btn-primary" 
+                                                    >
                                                         <li class="fa fa-pencil"> {{ trans('admin_global.btn_edit') }}</li>
-                                                    </button >
-                                                    <button data-url="{{url('admin/courses/add/'.$u->id)}}" class="users-edit-modal-btn btn btn-primary" data-original="">
-                                                        <li class="fa fa-pencil">اضافة الدروس</li>
-                                                    </button >
-                                                    <a data-url="{{url('admin/courses/delete/'.$u->id)}}" class="btn btn-danger modal-delete-btn"  >
+                                                    </a >
+
+                                                    <a data-url="{{url('admin/cources/delete/'.$u->id)}}" class="btn btn-danger modal-delete-btn"  >
                                                         <li class="fa fa-trash"> {{ trans('admin_global.btn_delete') }}</li>
                                                     </a>
                                                 </td>

@@ -81,9 +81,22 @@
                                             </div>
                                             <div class="widget-content">
                                                 <ul class="share">
-                                                    <li><a href="#" class="fa fa-facebook"></a></li>
-                                                    <li><a href="#" class="fa fa-twitter"></a></li>
-                                                    <li><a href="#" class="fa fa-google-plus"></a></li>
+                                           
+
+                                                    <!-- AddToAny BEGIN -->
+                                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                                    
+                                                    <a class="a2a_button_facebook"
+                                                     data-url="{{$article->getUrl()}}"></a>
+                                                    <a 
+                                                    data-url="{{$article->getUrl()}}"
+                                                    class="a2a_button_twitter"></a>
+                                                    <a 
+                                                    data-url="{{$article->getUrl()}}"
+                                                    class="a2a_button_google_plus"></a>
+                                                    </div>
+                                                   
+                                                    <!-- AddToAny END -->
                                                 </ul>
                                             </div>
                                         </div>

@@ -30,6 +30,8 @@ Route::group(['namespace' => 'Site'], function () {
     });
 
 
+
+
     /**
     *  Home routes
     */
@@ -90,9 +92,18 @@ Route::group(['namespace' => 'Site'], function () {
 
 
 
+
+
      Route::resource('instructor', 'Instructorontroller');
     Route::resource('article', 'ArticleController');
 
+      /**
+    *  Category routes
+    */
+    Route::group(['prefix'=>'article'],function(){
+        Route::get('/{slug}', 'ArticleController@getIndex')->name('site.article.index');
+
+    });
       /**
     *  Category routes
     */
@@ -100,6 +111,8 @@ Route::group(['namespace' => 'Site'], function () {
         Route::get('/{slug}', 'Instructorontroller@getIndex')->name('site.instructor.index');
         Route::post('/comment', 'Instructorontroller@postComment');
     });
+
+ 
 
 
 

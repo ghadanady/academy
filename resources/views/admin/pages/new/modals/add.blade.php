@@ -67,6 +67,16 @@
                            </select>
                        </div>
                     </div>
+                    <div class="row">
+                      <div class="form-group col-md-6 col-sm-6">
+                          <label>حاله القسم</label>
+                          <select class="form-control" name="active">
+                              <option value="">-- اختر الحاله --</option>
+                              <option value="1">فعال</option>
+                              <option value="0">غير فعال</option>
+                          </select>
+                      </div>
+                    </div>
                      <div class="row">
                         <div class="form-group col-sm-12">
                             <label>المحتوى  </label>

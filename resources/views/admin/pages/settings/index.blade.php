@@ -177,7 +177,9 @@
                     <label for="youtube">محتوى  البلوك الكبير </label>
                     <textarea 
                     class="form-control" name="l_block_des"
-                    value="{{$settings->l_block_des}}"></textarea> 
+                    value="">
+                        {{$settings->l_block_des}}
+                    </textarea> 
                 </div>
             </div>
            <!--  end large block -->
@@ -194,7 +196,9 @@
                         <label for="youtube">محتوى  البلوك الصغير  </label>
                         <textarea 
                         class="form-control" id="youtube" name="s_block1_des"
-                        value="{{$settings->s_block1_des}}"></textarea> 
+                        value="">
+                            {{$settings->s_block1_des}}
+                        </textarea> 
                     </div>
                         
                     </div>
@@ -210,7 +214,9 @@
                         <label for="youtube">شهادات معتمدة  </label>
                         <textarea 
                         class="form-control" id="youtube" name="s_block2_des"
-                        value="{{$settings->s_block2_des}}"></textarea> 
+                        value="">
+                            {{$settings->s_block2_des}}
+                        </textarea> 
                     </div>
                     </div>
 

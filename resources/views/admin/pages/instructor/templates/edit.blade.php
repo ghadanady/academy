@@ -4,7 +4,7 @@
                             <!-- Profile Image -->
                               <div class="box box-primary">
                                 <div class="box-body box-profile file-box">
-                                  <img  style="cursor:pointer;"  class="profile-user-img file-btn img-responsive img-circle" src="{{url('storage/uploads/images/avatars/{avatar}')}}"  alt="User profile picture">
+                                  <img  style="cursor:pointer;"  class="profile-user-img file-btn img-responsive img-circle" src="{{url('storage/uploads/images/instructor/{avatar}')}}"  alt="User profile picture">
                                   <input type="file"  style="visibility: hidden;" name="avatar">
                                 </div>
                                 <!-- /.box-body -->
@@ -74,19 +74,45 @@
                         <input type="text" class="form-control required"  value="{instgram}" name="instgram">
                     </div>
                 </div>
+                <div class="row">
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label class="col-md-4"> القسم </label>
+                                <select name="cat_id" class="form-control">
+                                    <option value="{cat_id}">
+                                     {cat_name}
+                                    </option>
+                                    @foreach ($categories as $category)
+                                       
+                                       <option value="{{$category->id}}">
+                                       {{$category->name}}
+                                       </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label>حاله القسم</label>
+                                <select class="form-control" name="active">
+                                    <option value="{active}">{active_st}</option>
+                                    <option value="1">فعال</option>
+                                    <option value="0">غير فعال</option>
+                                </select>
+                            </div>
+                            </div>
 
                 <div class="row">
                     <div class="form-group col-sm-12">
                         <label>نبذه عن المحاضر  </label>
 
-                        <textarea class="tiny-editor" name="about">{about}</textarea>
+                        <textarea class="tiny-editor form-control" name="about">{about}</textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        <label>مؤهلات المحاضر   </label>
+                        <label>مؤهلات المحاضر  
+                        <small>يرجى ادخال المؤهلات مفصوله ب (-)</small>
+                         </label>
 
-                        <textarea class="tiny-editor" name="skills">{skills}</textarea>
+                        <textarea class="tiny-editor form-control" name="skills">{skills}</textarea>
                     </div>
                 </div>

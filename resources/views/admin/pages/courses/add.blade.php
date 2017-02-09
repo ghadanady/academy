@@ -150,21 +150,28 @@
                 <label class="col-md-6"> عن الكورس </label>
                 <div class="form-group col-md-12">
                     <textarea class="form-control tiny-editor"
+
                      name="body" rows="3" placeholder=""></textarea>
                 </div>
             </div>
             <div class="row">
-                <label class="col-md-6"> الدروس المستفاده </label>
+                <label class="col-md-6"> الدروس المستفاده 
+                <small>يرجى ادخال الدروس المستفادة مفصوله ب (-)</small>
+                </label>
                 <div class="form-group col-md-12">
                     <textarea class="form-control tiny-editor"
-                     name="lessons_learned" rows="3" placeholder=""></textarea>
+                     placeholder="html-css-js"
+                     name="lessons_learned" rows="3" ></textarea>
                 </div>
             </div>
             <div class="row">
-                <label class="col-md-6"> أهداف الكورس </label>
+                <label class="col-md-6"> أهداف الكورس 
+                <small>يرجى ادخال اهداف الكورس  مفصوله ب (-)</small>
+                </label>
                 <div class="form-group col-md-12">
                     <textarea class="form-control tiny-editor"
-                     name="aim" rows="3" placeholder=""></textarea>
+                    placeholder="html-css-js"
+                     name="aim" rows="3" ></textarea>
                 </div>
             </div>
 
