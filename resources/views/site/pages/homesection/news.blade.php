@@ -20,7 +20,7 @@
                         </div><!--End Blog-date-->
                     </div><!--End Blog-img-->
                     <div class="blog-content">
-                        <a href="only-blog.html">{{$a->name}}</a>
+                        <a href="{{url('news')}}/{{$a->slug}}">{{$a->name}}</a>
                         <ul class="info">
                             <li>
                                 <i class="fa fa-edit"></i>
@@ -31,7 +31,8 @@
                                 {{$a->Category->name}}
                             </li>
                         </ul><!--End Info-->
-                       {!! $a->body!!}
+                       {!!str_limit($a->body,70)!!}
+
                     </div><!--End Blog-content-->
                 </div><!--End Blog-item-->
             </div>

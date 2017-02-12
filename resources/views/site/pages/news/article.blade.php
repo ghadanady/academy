@@ -34,7 +34,7 @@
                                     <div class="only-blog-content">
                                         <div class="only-blog-img">
                             <img 
-                            src="{{ url('storage/uploads/images/article') }}/{{ $article->image ?
+                            src="{{ url('storage/uploads/images/new') }}/{{ $article->image ?
                              $article->image->name : 'p_default.png' }}"/>
                                         </div>
                                         <div class="title">
@@ -112,7 +112,7 @@
                                                 <div class="item-list">
                                                     <div class="item-list-img">
                              <img 
-                            src="{{ url('storage/uploads/images/article') }}/{{ $r->image ? $r->image->name : 'p_default.png' }}"/>
+                            src="{{ url('storage/uploads/images/new') }}/{{ $r->image ? $r->image->name : 'p_default.png' }}"/>
                                                     </div>
                                                     <div class="item-list-details">
                                                         <a href="{{$r->getUrl()}}">{{$r->name}}</a>
@@ -140,7 +140,7 @@
                                                 <div class="item-list">
                                                     <div class="item-list-img">
                                                          <img 
-                                                        src="{{ url('storage/uploads/images/article') }}/{{ $r->image ? $r->image->name : 'p_default.png' }}"/>
+                                                        src="{{ url('storage/uploads/images/new') }}/{{ $r->image ? $r->image->name : 'p_default.png' }}"/>
                                                     </div>
                                                     <div class="item-list-details">
                                                         <a href="{{$r->getUrl()}}">{{$r->name}}</a>
@@ -148,7 +148,7 @@
                                                            <p>
                                                               
                                                               
-                                                               {!!str_limit($r->body,70)!!}
+                                                               {!!str_limit($r->body,50)!!}
                                                                
                                                         </p>
                                                         

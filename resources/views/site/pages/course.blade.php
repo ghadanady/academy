@@ -272,66 +272,31 @@
                                 </div>
                             </div><!--End Widget-content-->
                         </div><!--End Widget-->
-                        <div class="widget-color">
+                                    <div class="widget-color">
                             <div class="widget-title">
-                                تقييمات الكورس
+                               اخر  التقيمات
                             </div><!--End Widget-title-->
+
+@if(count($course->comments)>0)
                             <div class="widget-content">
-                                <div class="rate-status">
-                                    متوسط التقييمات 
-                                    <span>4.8</span>
-                                </div>
+                 
+
+@foreach($course->rate as $c)
+
                                 <div class="rate-stars">
                                     <ul class="rate">
+                                    @for( $i=0;$i<$c->rate;$i++)
                                         <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
+                                    @endfor
                                     </ul>
-                                    <span>45</span>
+                                    <span>{{$c->rate}}</span>
+                                    
+
                                 </div>
-                                <div class="rate-stars">
-                                    <ul class="rate">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                    </ul>
-                                    <span>24</span>
-                                </div>
-                                <div class="rate-stars">
-                                    <ul class="rate">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                    </ul>
-                                    <span>18</span>
-                                </div>
-                                <div class="rate-stars">
-                                    <ul class="rate">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                    </ul>
-                                    <span>6</span>
-                                </div>
-                                <div class="rate-stars">
-                                    <ul class="rate">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                    </ul>
-                                    <span>2</span>
-                                </div>
+@endforeach
                             </div><!--End Widget-content-->
+@endif
+                        </div><!--End Widget-->
                         </div><!--End Widget-->
 @if(count($relatedCources)>0)
                         <div class="widget-color">
@@ -348,7 +313,7 @@
                                         <a href="only-course.html">{{$c->name}}</a>
                                         <p>
                                            
-                                            {!!str_limit($c->body,30)!!}
+                                            {!!str_limit($c->body,2)!!}
                                         
                                         </p>
                                 </div>

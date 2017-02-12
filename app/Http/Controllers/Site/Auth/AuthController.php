@@ -129,9 +129,24 @@ class AuthController extends Controller
 
     public function postRecoverPassword(Request $r){
 
-        $this->validate($r,[
+
+	  $v =  validator($r->all(), [
+            
+            
             'email' => 'required|email',
+
         ]);
+        $v->setAttributeNames([
+   
+            'email' => "البريد الالكتروني",
+            
+        ]);
+        
+    
+    
+         if ($v->fails()) {
+             return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
+        }
 
         // grapping site credentials
         $email = $r->input('email');
@@ -149,10 +164,12 @@ class AuthController extends Controller
                 $m->to($site->email, $site->name)->subject('Your Reminder!');
             });
 
-            return redirect('auth/login');
+            //return redirect('auth/login');
+            return msg('success.save',['msg' => " تم ارسال كلمة المرور الى الايميل   "]);
         }
         // failed
-        return redirect()->back()->with('msg' , 'اincorrect data');
+        return msg('error.save',['msg' => "حدث خطأ اثناء الارسال  "]);
+        //return redirect()->back()->with('msg' , 'اincorrect data');
     }
 
     public function postChangePassword(Request $r){

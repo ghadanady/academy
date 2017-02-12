@@ -76,6 +76,11 @@ class Course extends Model
     {
         return $this->morphMany('App\Comment', 'commentable');
     }
+    public function rate()
+    {
+        return  $this->comments()->limit(5);
+       // return $this->morphMany('App\Comment', 'commentable');
+    }
 
 
   

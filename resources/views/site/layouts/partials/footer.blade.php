@@ -34,7 +34,7 @@
                 <footer class="footer footer-img">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-4 col-sm-12">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="widget">
                                     <div class="widget-content">
                                         <a class="logo" href="{{ $settings->getLogo() }}">
@@ -47,7 +47,7 @@
                                     </div><!--End Widget-content-->
                                 </div><!--End Widget-->
                             </div><!--End Col-md-4 -->
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-6 col-sm-6">
                                 <div class="widget">
                                     <div class="widget-title">
                                         لينكات سريعة
@@ -64,27 +64,9 @@
                                     </div><!--End Widget-content-->
                                 </div><!--End Widget-->
                             </div><!--End Col-md-4-->
-                            <div class="col-md-4 col-sm-6">
-                                <div class="widget">
-                                    <div class="widget-title">
-                                       أخر التغريدات
-                                    </div><!--End Widget-title-->
-                                    <div class="widget-content">
-                                        <div class="tweet-con">
-                                            <div class="tweet-details">
-                                                <i class="fa fa-twitter"></i>
-                                              هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ
-                                                <span>
-                                                    @heshamgamal89
-                                                </span>
-                                            </div>
-                                            <div class="tweet-time">
-                                            منذ 9 ساعات
-                                            </div>
-                                        </div>
-                                    </div><!--End Widget-content-->
-                                </div><!--End Widget-->
-                            </div><!--End Col-md-4-->
+                            
+                          
+                          
                         </div><!-- End Row -->
                     </div><!-- End Container -->
                 </footer><!-- End Footer -->

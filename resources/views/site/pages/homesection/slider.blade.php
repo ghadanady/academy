@@ -16,9 +16,7 @@
                             <div class="small-title">
                                {{$s->sub_title}}
                             </div>
-                            <div class="link">
-                                <a href=" {{$s->sub_link}" class="custom-btn">سجل الأن</a>
-                            </div>
+                            
                         </div>
                     </div>
                  @endforeach

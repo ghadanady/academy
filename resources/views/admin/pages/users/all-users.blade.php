@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 
 @section('title')
@@ -22,9 +21,7 @@
 
                         <div class="box-body">
                             <div class="row" style="margin-bottom: 20px;">
-                                <a href="#adduser" class="btn btn-primary" data-toggle="modal" >
-                                    <i class="fa fa-plus"></i>{{ trans('admin_global.users_new') }}
-                                </a>
+                               
                             </div>
 
                             <div class="table-responsive">

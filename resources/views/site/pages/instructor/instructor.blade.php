@@ -83,7 +83,7 @@
                                             @if(count($in->skills)>0 &&!empty($in->skills))
                                                 <ul class="qualfic">
                                                 @foreach($in->skills as $s)
-                                                    <li>{{$s}}</li>
+                                                    <li>{!!$s!!}</li>
                                                 @endforeach
 
                                                 </ul>

@@ -273,6 +273,7 @@ $star_rating.on("click", function() {
                   }else{
 
                    toastr.success(data.msg);
+                   location.reload();
                   }                
 
               }

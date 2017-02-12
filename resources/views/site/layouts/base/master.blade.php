@@ -89,12 +89,13 @@
             <div class="dialog-title">
                 إسترجاع كلمة المرور
             </div>    
-            <form class="dialog-form">
+            <form class="dialog-form" action="{{route('site.auth.fpassword')}}" method="post">
             {{ csrf_field() }}
+            <div style="margin:10px;" class="msg"></div> 
                 <div class="form-group">
-                    <input class="form-control"  name="password" placeholder="البريد الالكترونى" type="email">
+                    <input class="form-control"  name="email" placeholder="البريد الالكترونى" type="email">
                 </div><!--End form-group-->
-                <button type="submit" class="custom-btn">إسترجاع كلمة المرور</button>
+                <button type="button" class="registerLoginBTN custom-btn">إسترجاع كلمة المرور</button>
             </form><!--End dialog-form-->
 
 

@@ -69,7 +69,7 @@ class News extends Model
     public function getUrl()
     {
 
-        return route('site.article.index',['slug'=> $this->slug]);
+        return route('site.news.index',['slug'=> $this->slug]);
 
     }
 }

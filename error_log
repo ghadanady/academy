@@ -1,0 +1,8 @@
+[09-Feb-2017 22:09:17 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Site\Article' not found in /home/corecave/public_html/academy/app/Http/Controllers/Site/NewsController.php on line 38
+[10-Feb-2017 16:58:29 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/corecave/public_html/academy/storage/framework/views/34e0813f42ba199c7c0db1b951fe5aff980952a6.php on line 47
+[10-Feb-2017 16:59:09 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/corecave/public_html/academy/storage/framework/views/34e0813f42ba199c7c0db1b951fe5aff980952a6.php on line 49
+[10-Feb-2017 17:01:42 UTC] PHP Fatal error:  Class 'Agent' not found in /home/corecave/public_html/academy/storage/framework/views/34e0813f42ba199c7c0db1b951fe5aff980952a6.php on line 72
+[10-Feb-2017 20:31:27 UTC] PHP Fatal error:  Call to a member function increment() on null in /home/corecave/public_html/academy/app/Http/Controllers/Site/NewsController.php on line 37
+[10-Feb-2017 20:39:57 UTC] PHP Fatal error:  Call to a member function increment() on null in /home/corecave/public_html/academy/app/Http/Controllers/Site/ArticleController.php on line 36
+[10-Feb-2017 20:44:19 UTC] PHP Fatal error:  Call to a member function increment() on null in /home/corecave/public_html/academy/app/Http/Controllers/Site/ArticleController.php on line 36
+[10-Feb-2017 20:44:21 UTC] PHP Fatal error:  Call to a member function increment() on null in /home/corecave/public_html/academy/app/Http/Controllers/Site/ArticleController.php on line 36

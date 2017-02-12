@@ -23,8 +23,10 @@ Route::group(['namespace' => 'Site'], function () {
     	->name('site.auth.register');
     	Route::get('logout', 'AuthController@getLogout')
     	->name('site.auth.logout');
-    	Route::get('forget-password','AuthController@getRecoverPassword')
-    	->name('site.auth.forget-password');
+
+
+    	 Route::post('fpassword','AuthController@postRecoverPassword')
+    	->name('site.auth.fpassword');
 
 
     });
@@ -110,6 +112,16 @@ Route::group(['namespace' => 'Site'], function () {
     Route::group(['prefix'=>'instructor'],function(){
         Route::get('/{slug}', 'Instructorontroller@getIndex')->name('site.instructor.index');
         Route::post('/comment', 'Instructorontroller@postComment');
+    });
+    
+      Route::resource('news', 'NewsController');
+
+      /**
+    *  Category routes
+    */
+    Route::group(['prefix'=>'news'],function(){
+        Route::get('/{slug}', 'NewsController@getIndex')->name('site.news.index');
+
     });
 
  
