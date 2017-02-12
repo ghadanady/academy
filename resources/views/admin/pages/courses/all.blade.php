@@ -2,7 +2,7 @@
 @extends('admin.master')
 
 @section('title')
-    الدورات 
+    الدورات
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                         <div class="box-body">
                             <div class="row" style="margin-bottom: 20px;">
                                 <a href="{{ route('admin.courses.add') }}" class="btn btn-primary">
-                                    <i class="fa fa-plus"></i>اضافة دورة جديديه 
+                                    <i class="fa fa-plus"></i>اضافة دورة جديديه
                                 </a>
                             </div>
 @if(count($courses)>0)
@@ -45,10 +45,18 @@
                                                 <td>{{$u->Category->name}}</td>
                                                 <td>{{$u->created_at}}</td>
                                                 <td class="text-center">
-                                                    <a 
-                                                    href="{{url('admin/cources/info/'.$u->id)}}" class=" btn btn-primary" 
+                                                    <a
+                                                    href="{{url('admin/cources/info/'.$u->id)}}" class=" btn btn-primary"
                                                     >
                                                         <li class="fa fa-pencil"> {{ trans('admin_global.btn_edit') }}</li>
+                                                    </a >
+
+                                                    <a
+                                                    href="{{url('admin/lesson/'.$u->id)}}" class=" btn btn-primary" 
+                                                    >
+                                                        <li class="fa fa-pencil">
+                                                    دروس الدورة
+                                                        </li>
                                                     </a >
 
                                                     <a data-url="{{url('admin/cources/delete/'.$u->id)}}" class="btn btn-danger modal-delete-btn"  >

@@ -35,6 +35,22 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::post('/edit', 'UsersController@postEdit');
         });
 
+
+                /**
+                * articles routes
+                */
+            Route::group(['prefix' => 'lesson'], function () {
+                Route::get('/{id}','LessonController@getIndex')->name('admin.lesson.index');
+                Route::get('/add/{course_id?}','LessonController@getAdd')->name('admin.lesson.addlesson');
+                Route::post('add','LessonController@postAdd')->name('admin.lesson.postaddlesson');;
+                Route::get('edit/{id}','LessonController@getEdit')->name('admin.lesson.edit');
+                Route::post('edit/{id}','LessonController@postEdit');
+                Route::post('/action/{action}', 'LessonController@postAction');
+                Route::get('/delete/{id}','LessonController@getDelete')->name('admin.lesson.delete');
+                Route::get('/filter/{filter}', 'LessonController@getFilter');
+                Route::get('/search/{q?}', 'LessonController@getSearch');
+            });
+
      /**
         * Users Routes
         */
@@ -179,7 +195,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 
 
-        
+
     });
 
 });

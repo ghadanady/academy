@@ -60,6 +60,8 @@
                     <a href="{{url('admin/cources')}}">
                         <i class="fa fa-dashboard"></i> <span>الدورات  </span>
                     </a>
+
+
                 </li>
 
 
@@ -87,8 +89,8 @@
                 </li>
 
 
- 
-              
+
+
             @endif
         </li>
 
