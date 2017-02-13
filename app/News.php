@@ -72,4 +72,9 @@ class News extends Model
         return route('site.news.index',['slug'=> $this->slug]);
 
     }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Comment', 'commentable');
+    }
 }

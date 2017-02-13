@@ -94,10 +94,19 @@ class AuthController extends Controller
              return msg('error.save',['msg' => implode('<br>', $v->errors()->all())]);
         }
 
+        $email = $r->input('email');
+
+         // create a gravatar object for specified email
+         $avatar = Avatarer::driver('Gravatar')->make( $email );
+
+          // get gravatar url as a string
+         $url = $avatar->url();
+        // dd($url);
         $member = new Member();
         $member->f_name = $r->input('f_name');
         $member->l_name = $r->input('l_name');
         $member->email = $r->input('email');
+         $member->img = $url;
         $member->password =  bcrypt($r->input('password'));
         $member->active =  1;
 

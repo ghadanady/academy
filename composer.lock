@@ -4,9 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1e05fbfb22b6c0e7df59b9988b145a2",
-    "content-hash": "163668b18aade9fb284bd4b7a96ab0e1",
+    "hash": "6e80282e99c1867861093a0be92173f4",
+    "content-hash": "e39b5fc81ffcba49549be0e8227fffac",
     "packages": [
+        {
+            "name": "artdarek/avatarer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artdarek/avatarer.git",
+                "reference": "c877aaa6d5520fb71c5721bd658b15609862fcb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artdarek/avatarer/zipball/c877aaa6d5520fb71c5721bd658b15609862fcb9",
+                "reference": "c877aaa6d5520fb71c5721bd658b15609862fcb9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Artdarek\\Avatarer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dariusz Prząda",
+                    "email": "artdarek@gmail.com",
+                    "homepage": "http://www.przada.pl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Avatarer - Social media avatars for Laravel 5",
+            "homepage": "https://github.com/artdarek/avatarer",
+            "keywords": [
+                "Avatarer",
+                "avatar",
+                "gravatar",
+                "laravel 5"
+            ],
+            "time": "2015-09-22 23:29:43"
+        },
         {
             "name": "chencha/share",
             "version": "5.2.1",

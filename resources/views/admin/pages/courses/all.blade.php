@@ -58,6 +58,14 @@
                                                     دروس الدورة
                                                         </li>
                                                     </a >
+                                                    <a
+                                                    href="{{url('admin/test/'.$u->id)}}"
+                                                     class=" btn btn-warning" 
+                                                    >
+                                                        <li class="fa fa-pencil">
+                                                    اضافه اختبار
+                                                        </li>
+                                                    </a >
 
                                                     <a data-url="{{url('admin/cources/delete/'.$u->id)}}" class="btn btn-danger modal-delete-btn"  >
                                                         <li class="fa fa-trash"> {{ trans('admin_global.btn_delete') }}</li>

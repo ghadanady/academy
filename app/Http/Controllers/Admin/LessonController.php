@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Course;
 use App\Lesson;
-use App\Video;
 use App\Type;
 use DB;
 use App\Category;
@@ -14,7 +13,7 @@ use Carbon\Carbon;
 
 class LessonController extends Controller
 {
-    protected $uploadDestination = 'images/lessons';
+    protected $uploadDestination = 'images/articles';
 
     /**
     * Render the all articles pages.
@@ -27,7 +26,7 @@ class LessonController extends Controller
         if(request()->ajax()){
             return view('admin.pages.lesson.templates.table',compact('lessons'))->render();
         }
-        //dd($id);
+
         return view('admin.pages.lesson.index',compact('lessons','id'));
     }
 
@@ -51,7 +50,7 @@ class LessonController extends Controller
     {
         $article = Lesson::find($id);
 
-        if(!$article){
+        if(!$lesson){
            return back()->withWarning("لا يوجد هناك مقال يطابق هذا الرقم لكي يتم تعديله #$id.");
         }
 
@@ -69,7 +68,8 @@ class LessonController extends Controller
         $v = validator($r->all(),[
             'img' => 'required|file|image|max:20000',
             'title' => 'required|min:2',
-            'editor1' => 'required|min:2',  
+            'editor1' => 'required|min:2',
+            'tags' => 'required',
             'course_id' => 'required|integer',
             'video' => 'url',
             'active' => 'required|digits_between:0,1',
@@ -80,14 +80,11 @@ class LessonController extends Controller
             'img.image' => 'تاكد من ان الصوره المستخدمه تم اختيارها بنجاح و حجمها لا يقل عن 20 ميجا بايت.',
             'img.max' => 'تاكد من ان الصوره المستخدمه تم اختيارها بنجاح و حجمها لا يقل عن 20 ميجا بايت.',
             'video.url' => 'رابط الفيديو غير صالح لمشاهده.',
-            'title.required' => 'عنوان الدرس مطلويه.',
-            'editor1.required' => 'محتوي الدرس  مطلوبه',
-
-            'tags.required' => 'الكلمات الدلاليه مطلوبه',
-            'title.min' => 'عنوان المقالة لا يمكن ان تقل عن حرفين.',
+            'title.required' => 'عنوان المقاله مطلويه.',
+              'title.min' => 'عنوان المقالة لا يمكن ان تقل عن حرفين.',
             'editor1.min' => 'محتوي المقالة لا يمكن ان تقل عن حرفين.',
-            'active.required' => 'حالة الدرس مطلوبه',
-            'active.digits_between' => 'حالة الدرس لا يمكن ان تكون قيمه غير فعال او غير فعال.',
+            'active.required' => 'حالة المقاله مطلوبه',
+            'active.digits_between' => 'حالة المقاله لا يمكن ان تكون قيمه غير فعال او غير فعال.',
         ]);
 
         // return error msgs if validation is failed
@@ -99,8 +96,14 @@ class LessonController extends Controller
             ];
         }
 
-  
-
+        // check if the category exists
+        if(!Category::find($r->category_id)){
+            return [
+                'status' => 'error',
+                'title' => 'فشل في الاضافة',
+                'msg' => "لا يوجد قسم يطابق البيانات المرسله.",
+            ];
+        }
 
 
         // instanciate new article and save its data

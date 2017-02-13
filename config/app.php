@@ -235,6 +235,7 @@ return [
         //package aliases
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Avatarer'    => Artdarek\Avatarer\Facades\Avatarer::class,
 
 
 

@@ -104,6 +104,7 @@ Route::group(['namespace' => 'Site'], function () {
     */
     Route::group(['prefix'=>'article'],function(){
         Route::get('/{slug}', 'ArticleController@getIndex')->name('site.article.index');
+         Route::post('/comment', 'ArticleController@postComment');
 
     });
       /**
@@ -121,6 +122,7 @@ Route::group(['namespace' => 'Site'], function () {
     */
     Route::group(['prefix'=>'news'],function(){
         Route::get('/{slug}', 'NewsController@getIndex')->name('site.news.index');
+        Route::post('/comment', 'NewsController@postComment');
 
     });
 

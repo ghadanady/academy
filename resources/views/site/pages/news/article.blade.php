@@ -50,6 +50,80 @@
                                           {!!$article->body!!} 
 
                                         </div>
+       <div class="widget">
+                                              <div class="widget-title">
+                                                  أراء الطلاب
+                                              </div>
+                                              <div class="widget-content">
+      @if(count($article->comments)>0  && !empty($article->comments))
+         @foreach($article->comments as $c)
+                                                  <div class="comment-block">
+                                                      <div class="person-img">
+                                                          <img src="{{url('assets/images/team-5.jpg')}}">
+                                                      </div><!--End person-img-->
+                                                      <div class="person-comment">
+                                                          <h3>
+                                                               {{$c->member->f_name}}
+                                                          <ul class="rate">
+                                                             
+                                                 
+
+                                                     <li><i class="fa fa-star"></i></li>
+                                                      <li><i class="fa fa-star"></i></li>
+                                                       <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                      <li><i class="fa fa-star-o"></i></li>
+
+                                                            
+
+                                                          </ul>
+                                                      </h3>
+                                                      <p>
+                                                         {{$c->comment}} 
+                                                      </p>
+                                                  </div><!--End person-comment-->
+                                              </div><!--End comment-block-->
+
+      @endforeach
+      @else
+      <div class="alert alert-info">لم يتم اضافه كومنتات حتى الان كن اول من يعلق </div>                                                   
+      @endif
+
+                                              </div>
+                                          </div>
+
+                                            <div class="widget">
+                                              <div class="widget-title">
+                                                  أضف تعليق عن المحاضر
+                                              </div>
+                                              <div class="widget-content">
+                                                 <form action ='{{url("news/comment")}}'
+                                                 onsubmit="return false;" 
+                                                                 method="post" 
+                                                                 class="rate-form">
+                                                                 {{ csrf_field() }}
+                                                                 <input type="hidden"
+                                                                  name="news_id"
+                                                                  value="{{$article->id}}" 
+                                                                  />
+                                                                 
+                                                                 
+                                                                     <div class="form-group">
+                                                                         <textarea 
+                                                                         name="comment" 
+                                                 
+
+                                                                         class="form-control" placeholder="التعليق"></textarea>
+                                                                     </div>
+                                                                    
+                                                                     <div class="form-group">
+                                                                         <button class="addComment custom-btn">إرسال </button>
+                                                                     </div>
+                                                                 </form>
+                                              </div>
+                                          </div>
+
+                                           <div class="clearfix"></div>
 
                                        
 
