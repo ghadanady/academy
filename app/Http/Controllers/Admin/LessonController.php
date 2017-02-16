@@ -69,7 +69,6 @@ class LessonController extends Controller
             'img' => 'required|file|image|max:20000',
             'title' => 'required|min:2',
             'editor1' => 'required|min:2',
-            'tags' => 'required',
             'course_id' => 'required|integer',
             'video' => 'url',
             'active' => 'required|digits_between:0,1',
@@ -96,14 +95,8 @@ class LessonController extends Controller
             ];
         }
 
-        // check if the category exists
-        if(!Category::find($r->category_id)){
-            return [
-                'status' => 'error',
-                'title' => 'فشل في الاضافة',
-                'msg' => "لا يوجد قسم يطابق البيانات المرسله.",
-            ];
-        }
+  
+  
 
 
         // instanciate new article and save its data

@@ -142,6 +142,7 @@ class ArticleController extends Controller
         // set the new values for update
         $a->name = $r->name;
         $a->body = $r->body;
+        $a->url = $r->url;
 
         // validate if there's an image remove the old one and  save the new one.
         $destination = storage_path('uploads/images/article');

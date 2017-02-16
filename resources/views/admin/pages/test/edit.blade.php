@@ -68,17 +68,17 @@
                                 <div class="row col-md-12">
                                     <div class="row col-md-12"><input class="form-control" type="text" placeholder="ادخل السؤال"
                                    value='{{$q["title"][0]}}' 
-                                     name="q[{{$key}}]['title'][]"></div>
+                                     name="q[{{$key}}][title][]"></div>
 
                                     <div class="row col-md-12">
                                         <input type="text"  class="form-control" placeholder="ادخل الاجابه الصحيحه " 
-                                      value="{{$q['true']}}" 
-                                        name="q['true'][]">
+                                      value="{{$q['true'][0]}}"
+                                        name="q[{{$key}}][true][]">
                                     </div>
 
                                     <span>
 @foreach($q['notTrue'] as $w)
-                                        <input class="form-control" placeholder="ادخل الاجابه الصحيحه " value="{{$w}}" name="q[{{$key}}]['notTrue'][]" type="text">
+                                        <input class="form-control" placeholder="ادخل الاجابه الصحيحه " value="{{$w}}" name="q[{{$key}}][notTrue][]" type="text">
 @endforeach
                                     </span>
 

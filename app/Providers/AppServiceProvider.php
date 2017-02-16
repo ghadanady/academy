@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Category;
+use App\CourseCategory;
 use App\Instructor;
 use App\Course;
 use App\Member;
@@ -20,7 +21,8 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->share([
-            'categories'=> Category::where('active','1')->get(),
+            'categories'=> CourseCategory::where('active','1')->get(),
+            'articlecategories'=> Category::where('active','1')->get(),
             'instructores'=> Instructor::where('active','1')->get(),
             'count_cources'=> count(Course::Active()->get()),
             'count_instructor'=> count(Instructor::Active()->get()),

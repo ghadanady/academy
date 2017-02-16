@@ -11,6 +11,7 @@ use App\Instructor;
 use Hash;
 use Auth;
 use App\Image;
+use App\MemberCourse;
 
 
 class CourseController extends Controller
@@ -24,8 +25,24 @@ class CourseController extends Controller
         if(auth()->user()->isNormal()){
             return redirect('admin')->withWarning(trans('admin_global.denied_page'));
         }
-        $courses = Course::paginate(15);
+        $courses = Course::latest()->paginate(5);
+        //dd($courses);
         return view('admin.pages.courses.all', compact('courses'));
+    }
+
+
+     /**
+     * render and paginate the users page.
+     *
+     * @return string
+     */
+    public function getOrder() {
+        if(auth()->user()->isNormal()){
+            return redirect('admin')->withWarning(trans('admin_global.denied_page'));
+        }
+        $courses = MemberCourse::latest()->paginate(5);
+        //dd($courses);
+        return view('admin.pages.courses.coursesOrder', compact('courses'));
     }
 
     /**
@@ -84,10 +101,10 @@ class CourseController extends Controller
 
         $course = new Course($r->except(['_token']));
         $course->slug= $this->generateSlug($r->name);
-        $course->lessons= json_encode($r->q);
         $course->body= $r->editor1;
-        $course->lessons_learned= $r->editor2;
-        $course->aim= $r->editor3;
+        $course->tasks= $r->editor2;
+        $course->lessons_learned= $r->editor3;
+        $course->aim= $r->editor4;
         
 
 
@@ -171,14 +188,15 @@ class CourseController extends Controller
        $course->lecture_number= $r->lecture_number;
        $course->student_number= $r->student_number;
        $course->time= $r->time;
-       $course->lessons= json_encode($r->q);
        $course->period= $r->period;
        $course->lessons_learned= $r->lessons_learned;
        $course->aim= $r->aim;
        $course->active= $r->active;
        $course->body= $r->editor1;
-       $course->lessons_learned= $r->editor2;
-       $course->aim= $r->editor3;
+        $course->tasks= $r->editor2;
+       $course->lessons_learned= $r->editor3;
+
+       $course->aim= $r->editor4;
  
  
 
@@ -210,13 +228,25 @@ class CourseController extends Controller
     public function postInfo($id)
     {
         $course = Course::find($id);
-        if($course->lessons_learned) $course->lessons_learned=explode('-',$course->lessons_learned);
-        if($course->aim) $course->aim=explode('-',$course->aim);
-        if($course->lessons) $course->lessons=json_decode($course->lessons,true);
-        $lessons_count=count($course->lessons['qtitle']);
+        if($course->lessons_learned) $course->lessons_learned=implode(" ",explode('-',$course->lessons_learned));
+        if($course->aim) $course->aim=implode("-",explode('-',$course->aim));
+       // dd($course->aim);
+        
+       
 
-         return view('admin.pages.courses.edit',compact('course','relatedCources','lessons_count'));
+         return view('admin.pages.courses.edit',compact('course','relatedCources'));
     }
+
+    public function getAddOrder($id,$agree)
+    {
+       // dd($agree);
+       $agree=$agree==0?1:0;
+        $order = MemberCourse::find($id);
+        $order->agree=$agree;
+        $order->save();
+       
+          return redirect()->back()->with('m', 'User with id #'.$id.' not found');
+     }
     /**
      * delete a user account if its id is passed
      * if not it will delete the current user
@@ -241,7 +271,32 @@ class CourseController extends Controller
         }
 
         $course->delete();
-        return redirect()->back()->with('m', 'User has been deleted successfully');
+        return redirect()->back()->with('m', 'تم الحذف بنجاح ');
+    }
+
+
+
+    /**
+     * delete a user account if its id is passed
+     * if not it will delete the current user
+     * @param  int $id
+     * @return Redirect
+     */
+    public function getDeleteOrder($id = null) {
+
+        if(!$id){
+            $id = Auth::id();
+            Auth::logout();
+        }
+
+        $order = MemberCourse::find($id);
+
+        if(!$order){
+            return redirect()->back()->with('m', 'User with id #'.$id.' not found');
+        }
+
+        $order->delete();
+        return redirect()->back()->with('m', 'تم الحذف بنجاح ');
     }
 
 }

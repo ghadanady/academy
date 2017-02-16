@@ -30,7 +30,7 @@
                             <label class="col-md-4"> القسم </label>
                             <select name="cat_id" class="form-control">
                                 <option value="{cat_id}">{cat}</option>
-                                @foreach ($categories as $category)
+                                @foreach ($articlecategories as $category)
                                    
                                    <option value="{{$category->id}}">
                                    {{$category->name}}
@@ -51,12 +51,17 @@
                            </select>
                        </div>
                     </div>
+                      <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label>الرابط   </label>
+                              <input type="text" value="{url}" class="form-control" name="url"/> 
+                        </div>
+                       
+                    </div>
                      <div class="row">
                         <div class="form-group col-sm-12">
                             <label>المحتوى  </label>
-                              <textarea class="tiny-editor"   value="" name="body">
-                                {body}
-                              </textarea>
+                           <textarea class=" form-control tiny-editor" name="body">{body}</textarea>
                         </div>
                        
                     </div>

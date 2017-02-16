@@ -6,37 +6,23 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">اضافه قسم جديد</h4>
             </div>
-            <form action="{{ route('admin.categories.add',['type' => 'sub']) }}" enctype="multipart/form-data" method="post"
-                onsubmit="return false;">
+            <form action="{{ route('admin.categories.add',['type' => 'main']) }}" 
+            enctype="multipart/form-data" method="post"
+                  onsubmit="return false;">
                 {!! csrf_field() !!}
                 <div class="modal-body">
-             
-
 
                     <div class="row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6 col-sm-6">
                             <label>اسم القسم</label>
-                            <input type="text" class="form-control" placeholder="مثال:تصميم "  name="name">
+                            <input type="text" class="form-control" placeholder="مثال: برمجه "  name="name">
                         </div>
-                    
-                    
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6 col-sm-6">
                             <label>حاله القسم</label>
                             <select class="form-control" name="active">
                                 <option value="">-- اختر الحاله --</option>
                                 <option value="1">فعال</option>
                                 <option value="0">غير فعال</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>القسم الرئيسي</label>
-                            <select class="form-control" name="parent_id">
-                                <option value="">-- اختر القسم الرئيسي --</option>
-                                @foreach (App\CourseCategory::all() as $cat)
-                                    @if($cat->isMain())
-                                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
-                                    @endif
-                                @endforeach
                             </select>
                         </div>
                     </div>

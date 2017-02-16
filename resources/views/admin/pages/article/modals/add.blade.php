@@ -44,7 +44,7 @@
                                 <option value="">
                                  اختار القسم
                                 </option>
-                                @foreach ($categories as $category)
+                                @foreach ($articlecategories as $category)
                                    
                                    <option value="{{$category->id}}">
                                    {{$category->name}}
@@ -66,6 +66,13 @@
                                @endforeach
                            </select>
                        </div>
+                    </div>
+                      <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label>الرابط  </label>
+                              <input type="text" class="form-control" name="url"/> 
+                        </div>
+                       
                     </div>
                      <div class="row">
                         <div class="form-group col-sm-12">

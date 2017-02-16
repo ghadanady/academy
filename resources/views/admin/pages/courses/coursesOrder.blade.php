@@ -2,7 +2,7 @@
 @extends('admin.master')
 
 @section('title')
-    الدورات
+    طلبات الدورات 
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">عرض الدورات </h3>
+                <h3 class="box-title"> طلبات الدورات </h3>
                 <div class="box-tools pull-left">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>
@@ -22,17 +22,16 @@
 
                         <div class="box-body">
                             <div class="row" style="margin-bottom: 20px;">
-                                <a href="{{ route('admin.courses.add') }}" class="btn btn-primary">
-                                    <i class="fa fa-plus"></i>اضافة دورة جديديه
-                                </a>
+                              
+
                             </div>
 @if(count($courses)>0)
                             <div class="table-responsive">
                                 <table id="example" class="table table-bordered table-striped table-responsive">
                                     <thead>
                                         <tr>
-                                            <th>لاسم </th>
-                                            <th>القسم </th>
+                                            <th>اسم الدورة </th>
+                                            <th>اسم الطالب </th>
                                             <th>تاريخ التسجسل </th>
                                             <th class="text-center">العمليات </th>
                                         </tr>
@@ -41,34 +40,33 @@
 
                                         @foreach($courses as $u)
                                             <tr>
-                                                <td>{{$u->name}}</td>
-                                                <td>{{$u->Category['name']}}</td>
+                                                <td>{{$u->course['name']}}</td>
+                                                <td>{{$u->member['f_name']}}</td>
                                                 <td>{{$u->created_at}}</td>
                                                 <td class="text-center">
+                                                @if($u->agree==1)
                                                     <a
-                                                    href="{{url('admin/cources/info/'.$u->id)}}" class=" btn btn-primary"
+                                                    href="{{url('admin/cources/addOrder/'.$u->id.'/'.$u->agree)}}" class=" btn btn-primary"
                                                     >
-                                                        <li class="fa fa-pencil"> {{ trans('admin_global.btn_edit') }}</li>
+                                                        <li class="fa fa-pencil"> قبول </li>
                                                     </a >
+                                                    @else
 
                                                     <a
-                                                    href="{{url('admin/lesson/'.$u->id)}}" class=" btn btn-primary" 
+                                                    href="{{url('admin/cources/addOrder/'.$u->id.'/'.$u->agree)}}" class=" btn btn-warning"
                                                     >
-                                                        <li class="fa fa-pencil">
-                                                    دروس الدورة
-                                                        </li>
+                                                        <li class="fa fa-pencil"> رفض </li>
                                                     </a >
-                                                    <a
-                                                    href="{{url('admin/test/'.$u->id)}}"
-                                                     class=" btn btn-warning" 
-                                                    >
-                                                        <li class="fa fa-pencil">
-                                                   كل الاختبارات 
-                                                        </li>
-                                                    </a >
+                                                    @endif
 
-                                                    <a data-url="{{url('admin/cources/delete/'.$u->id)}}" class="btn btn-danger modal-delete-btn"  >
-                                                        <li class="fa fa-trash"> {{ trans('admin_global.btn_delete') }}</li>
+                                                  
+
+                                                  
+
+
+                                                    <a data-url="{{url('admin/cources/deleteOrder/'.$u->id)}}" class="btn btn-danger modal-delete-btn"  >
+                                                        <li class="fa fa-trash"> 
+                                                        {{ trans('admin_global.btn_delete') }}</li>
                                                     </a>
                                                 </td>
                                             </tr>

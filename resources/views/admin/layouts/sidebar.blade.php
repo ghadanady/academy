@@ -44,17 +44,19 @@
                         <i class="fa fa-dashboard"></i> <span>الاسليدر    </span>
                     </a>
                 </li>
+
+                 <li class="treeview">
+                    <a href="{{url('admin/page')}}">
+                        <i class="fa fa-dashboard"></i> <span>الصفحات الفرعيه     </span>
+                    </a>
+                </li>
                  <li class="treeview">
                     <a href="{{url('admin/instructor')}}">
                         <i class="fa fa-dashboard"></i> <span>المحاضرين  </span>
                     </a>
                 </li>
 
-                 <li class="treeview">
-                    <a href="{{ route('admin.categories.index' , ['type' => 'main']) }}">
-                        <i class="fa fa-dashboard"></i> <span>اقسام الدورات     </span>
-                    </a>
-                </li>
+
 
                  <li class="treeview">
                     <a href="{{url('admin/cources')}}">
@@ -63,11 +65,38 @@
 
 
                 </li>
+                <li class="treeview">
+                    <a href="{{url('admin/cources/order')}}">
+                        <i class="fa fa-dashboard"></i> <span>طلبات الدورات   </span>
+                    </a>
+
+
+                </li>
+                
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-pie-chart"></i>
+                        <span>اقسام الدورات </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('admin.categories.index' , ['type' => 'main']) }}"><i class="fa fa-circle-o"></i> {{ trans('categories.main_page_name') }}</a>
+                        </li>
+                        <li><a href="{{ route('admin.categories.index' , ['type' => 'sub']) }}"><i class="fa fa-circle-o"></i> {{ trans('categories.sub_page_name') }}</a>
+                        </li>
+            </li>
+        </ul>
+    </li>
 
 
                  <li class="treeview">
                     <a href="{{url('admin/article')}}">
                         <i class="fa fa-dashboard"></i> <span>المقالات  </span>
+                    </a>
+                </li>
+                 <li class="treeview">
+                    <a href="{{ route('admin.categories.index' , ['type' => 'main']) }}">
+                        <i class="fa fa-dashboard"></i> <span>اقسام المقالات      </span>
                     </a>
                 </li>
                   <li class="treeview">

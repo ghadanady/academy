@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 
 @section('title')
@@ -6,6 +5,8 @@
 @endsection
 
 @section('content')
+
+
     <section class="content">
         <!-- Default box -->
         <div class="box">
@@ -21,7 +22,7 @@
                         <div class="box-body">
                             <div class="row" style="margin-bottom: 20px;">
                                 <a href="#add-modal" class="btn btn-primary" data-toggle="modal" >
-                                    <i class="fa fa-plus"></i>{{ trans('categories.add_new_main_category') }}
+                                    <i class="fa fa-plus"></i>{{ trans('categories.add_new_sub_category') }}
                                 </a>
                             </div>
 @if(count($categories)>0)
@@ -31,21 +32,24 @@
                                         <tr>
                                             <th>{{ trans('categories.category_name') }}</th>
                                             <th>{{ trans('categories.category_status') }}</th>
+                                            <th>{{ trans('categories.main_category') }}</th>
                                             <th class="text-center">{{ trans('categories.operations') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         @foreach($categories as $category)
-                                            <tr {{$category->active ? 'info' : 'warning'}}>
+
+                                            <tr {{ $category->active ? 'info' : 'warning'}}>
                                                 <td>{{ $category->name }}</td>
-                                                <td>{{$category->active ? 'فعال' : 'غير فعال'}}</td>
+                                                <td>{{ $category->active ? 'فعال' : 'غير فعال'}}</td>
+                                                <td>{{ $category->mainCategory->name }}</td>
                                                 <td class="text-center">
                                                     <button type="button" data-url ="{{ route('admin.categories.info' , ['id' => $category->id ]) }}" class="btn edit-modal-btn btn-success "  >
                                                         <li class="fa fa-pencil">{{ trans('categories.edit') }}</li>
                                                     </button>
-                                                    <button type="button" data-url ="{{ route('admin.categories.change' , ['id' => $category->id ,'type' => 'sub']) }}" data-type="main" data-name="{{ $category->name }}"  data-id="{{ $category->id }}" class="btn change-type-btn btn-info " >
-                                                        <li class="fa fa-pencil">{{ trans('categories.set_as_sub_category') }}</li>
+                                                    <button type="button" data-url ="{{ route('admin.categories.change' , ['id' => $category->id ,'type' => 'sub']) }}" data-type="sub" class="btn change-type-btn btn-info "  >
+                                                        <li class="fa fa-pencil">{{ trans('categories.set_as_main_category') }}</li>
                                                     </button>
                                                     <a data-url="{{ route('admin.categories.delete' , ['id' => $category->id ]) }}" class="btn btn-danger modal-delete-btn"  >
                                                         <li class="fa fa-trash">{{ trans('categories.remove') }}</li>
@@ -65,14 +69,10 @@
                 </div>
                 <!-- /.box-body -->
             </section>
-            @section('templates')
-                <script id="change-category-type-template" type="text/html">
-                    @include('admin.pages.categories.main-categories.templates.change-category-type')
-                </script>
-            @endsection
+
             @section('modals')
-                @include('admin.pages.categories.main-categories.modals.edit-category')
-                @include('admin.pages.categories.main-categories.modals.add-category')
+                @include('admin.pages.categories.sub-categories.modals.edit-category')
+                @include('admin.pages.categories.sub-categories.modals.add-category')
             @endsection
 
         @endsection

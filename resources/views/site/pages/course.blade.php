@@ -70,12 +70,21 @@
                                                     <div class="widget-content">
                                                         <ul class="qualfic">
                                                         @foreach($course->lessons_learned as $le)
-                                                         <li>{{$le}}</li>
+                                                         <li>{!!$le!!}</li>
                                                         @endforeach             
                                                         </ul>
                                                     </div>
                                                 </div>
 @endif
+
+<div class="widget">
+    <div class="widget-title">
+        وجبات ومهام الدورة: 
+    </div>
+    <div class="widget-content">
+       {!!$course->tasks !!}
+    </div>
+</div>
 @if($course->aim)
                                                 <div class="widget">
                                                     <div class="widget-title">
@@ -84,7 +93,7 @@
                                                     <div class="widget-content">
                                                         <ul class="qualfic">
                                                         @foreach($course->aim as $a)
-                                                         <li>{{$a}}</li>
+                                                         <li>{!!$a !!}</li>
                                                         @endforeach
                                                         </ul>
                                                     </div>
@@ -96,29 +105,29 @@
                                         <div class="tab-pane fade in" id="tab2">
                                             <div class="tab-content">
                                                 <div class="toggle-container" id="faq-1">
-@if($course->lessons)
-@for($i=0;$i<$lessons_count;$i++)
+@if(count($course->lessons)>0)
+@foreach($course->lessons as $key=>$c)
 
                                                     <div class="panel">
-                                                        <a href="#question{{$i}}" data-toggle="collapse" data-parent="#faq-1">
-                                                         {{$course->lessons['qtitle'][$i]}}                 
+                                                        <a href="#question{{$key}}" data-toggle="collapse" data-parent="#faq-1">
+                                                         {!!$c->title!!}                 
                                                         </a>
-@if($i==0)
+@if($key==0)
                                                         <div class="panel-collapse collapse in" 
-                                                        id="question{{$i}}">
+                                                        id="question{{$key}}">
 @else
                                                       <div class="panel-collapse collapse " 
-                                                        id="question{{$i}}">
+                                                        id="question{{$key}}">
 
 @endif
                                                             <div class="panel-content">
                                                                 <p>
-                                                                 {{$course->lessons['qbody'][$i]}}  
+                                                                 {!!$c->content!!}  
                                                                 </p>
                                                             </div><!-- end content -->
                                                         </div><!--End panel-collapse-->
                                                     </div><!--End Panel-->
-@endfor
+@endforeach
 @else
 <div class="alert alert-info">لم يتم اضافه الدورس بعد .</div>                                                   
 @endif

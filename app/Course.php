@@ -23,10 +23,10 @@ class Course extends Model
         "lecture_number",
         "student_number",
         "time",
-        "lessons",
         "period",
         "lessons_learned" ,
         "aim",
+        "tasks",
         "active"
 
 
@@ -36,7 +36,7 @@ class Course extends Model
 
     public function Category()
     {
-        return $this->belongsTo('App\Category' ,'cat_id');
+        return $this->belongsTo('App\CourseCategory' ,'cat_id');
     }
 
     public function instarctor()
@@ -46,6 +46,10 @@ class Course extends Model
 
       public function image(){
         return $this->morphOne('App\Image', 'imageable');
+    }
+
+    public function lessons() {
+        return $this->hasMany('App\Lesson', 'course_id');
     }
 
 

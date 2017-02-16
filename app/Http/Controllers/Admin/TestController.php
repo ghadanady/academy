@@ -17,7 +17,7 @@ class TestController extends Controller
     */
     public function getIndex($id) {
 
-        $tests = Test::where('course_id',$id)->paginate(15);
+        $tests = Test::where('course_id',$id)->orderBy('id','desc')->paginate(5);
         if(request()->ajax()){
             return view('admin.pages.Test.templates.table',compact('Tests'))->render();
         }

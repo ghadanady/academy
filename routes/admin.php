@@ -86,13 +86,26 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         /**
         * Category route
         */
+        // Route::group(['prefix' => 'categories'], function () {
+        //     Route::get('/{type}', 'CategoryController@getIndex')->name('admin.categories.index');
+        //     Route::post('info/{id}', 'CategoryController@postInfo')->name('admin.categories.info');
+        //     Route::post('/edit/{type}/{id}', 'CategoryController@postEdit')->name('admin.categories.edit');
+        //     Route::post('/change/{type}/{id}', 'CategoryController@postChange')->name('admin.categories.change');
+        //     Route::post('/add/{type}', 'CategoryController@postAdd')->name('admin.categories.add');
+        //     Route::get('/delete/{id}','CategoryController@getDelete')->name('admin.categories.delete');
+        // });
+
+
+           /**
+        * Category route
+        */
         Route::group(['prefix' => 'categories'], function () {
-            Route::get('/{type}', 'CategoryController@getIndex')->name('admin.categories.index');
-            Route::post('info/{id}', 'CategoryController@postInfo')->name('admin.categories.info');
-            Route::post('/edit/{type}/{id}', 'CategoryController@postEdit')->name('admin.categories.edit');
-            Route::post('/change/{type}/{id}', 'CategoryController@postChange')->name('admin.categories.change');
-            Route::post('/add/{type}', 'CategoryController@postAdd')->name('admin.categories.add');
-            Route::get('/delete/{id}','CategoryController@getDelete')->name('admin.categories.delete');
+            Route::get('/{type}', 'CourseCategoryController@getIndex')->name('admin.categories.index');
+            Route::post('info/{id}', 'CourseCategoryController@postInfo')->name('admin.categories.info');
+            Route::post('/edit/{type}/{id}', 'CourseCategoryController@postEdit')->name('admin.categories.edit');
+            Route::post('/change/{type}/{id}', 'CourseCategoryController@postChange')->name('admin.categories.change');
+            Route::post('/add/{type}', 'CourseCategoryController@postAdd')->name('admin.categories.add');
+            Route::get('/delete/{id}','CourseCategoryController@getDelete')->name('admin.categories.delete');
         });
 
         /**
@@ -100,8 +113,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         */
         Route::group(['prefix' => 'cources'], function () {
             Route::get('/', 'CourseController@getIndex');
+             Route::get('/order', 'CourseController@getOrder');
             Route::get('/edit', 'CourseController@getEdit');
             Route::get('/delete/{id?}', 'CourseController@getDelete');
+            Route::get('/deleteOrder/{id?}', 'CourseController@getDeleteOrder');
+            Route::get('/addOrder/{id}/{agree}', 'CourseController@getAddOrder');
+            
             Route::post('/edit', 'CourseController@postEdit');
             Route::get('/add', 'CourseController@getAdd')->name('admin.courses.add');
             Route::post('/add', 'CourseController@postAdd');
@@ -153,6 +170,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::post('info/{id}', 'SliderController@postInfo')->name('admin.slider.info');
             Route::get('/delete/{id}','SliderController@getDelete')->name('admin.slider.delete');
         });
+
+        /**
+        * page route
+        */
+        Route::group(['prefix' => 'page'], function () {
+            Route::get('/', 'PageController@getIndex')->name('admin.page.index');
+            Route::get('edit/{id}', 'PageController@getEdit')->name('admin.page.edit');
+            Route::post('edit', 'PageController@postEdit');
+            Route::get('add', 'PageController@getAdd')->name('admin.page.add');
+            Route::post('add', 'PageController@postAdd');
+            Route::post('info/{id}', 'PageController@postInfo')->name('admin.page.info');
+            Route::get('/delete/{id}','PageController@getDelete')->name('admin.page.delete');
+        });
+
 
 
 

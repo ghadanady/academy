@@ -21,11 +21,8 @@ class CourseController extends Controller
         $course = Course::where('slug', $slug)->first();
        if($course->lessons_learned) $course->lessons_learned=explode('-',$course->lessons_learned);
        if($course->aim) $course->aim=explode('-',$course->aim);
-       if($course->lessons) $course->lessons=json_decode($course->lessons,true);
-       $lessons_count=count($course->lessons['qtitle']);
-
-
-
+       
+//dd($course->lessons);
 
         $relatedCources=Course::where('cat_id',$course->cat_id)->Active()->get(); 
 
@@ -35,7 +32,7 @@ class CourseController extends Controller
         }
 
 
-        return view('site.pages.course' , compact('course','relatedCources','lessons_count'));
+        return view('site.pages.course' , compact('course','relatedCources'));
     }
 
     public function getJoin($id)

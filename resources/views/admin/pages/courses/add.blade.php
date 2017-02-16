@@ -104,7 +104,7 @@
                                    <label class="col-md-4"> المحاضر  </label>
                                    <select name="instarctor_id" class="form-control">
                                        <option value="">
-                                        اختار القسم
+                                        اختار المحاضر
                                        </option>
                                        @foreach ($instructores as $i)
                                           
@@ -141,7 +141,7 @@
 
     <div class="panel">
         <a class="collapsed" href="#question2" data-toggle="collapse" data-parent="#faq-1">
-          عن الكورس
+          عن الكورس (اضغط لاضافه معلومات اضافيه )
         </a>
         <div class="panel-collapse collapse" id="question2">
             <div class="panel-content">
@@ -152,6 +152,14 @@
                     <textarea class="form-control tiny-editor"
 
                      name="body" rows="3" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-6">   واجبات ومهام  </label>
+                <div class="form-group col-md-12">
+                    <textarea class="form-control tiny-editor"
+
+                     name="tasks" rows="3" placeholder="ادخل واجبات ومهام الدورة"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -181,50 +189,7 @@
             </div><!-- end content -->
         </div><!--End panel-collapse-->
     </div><!--End Panel-->
-    <div class="panel">
-        <a class="collapsed" href="#question3" data-toggle="collapse" data-parent="#faq-1">
-            الدروس
-        </a>
-        <div class="panel-collapse collapse " id="question3" >
-        <div class="allQuestion">
-            <div class="panel-content question" >
-               <div class="row">
-               
-               <div class="form-group col-md-12">
-               <label > عنوان الدرس  </label>
-               <input  
-               class="form-control"  
-               placeholder="مثال:  الدرس الاول | مقدمة "
-                type="text" 
-                name="q[qtitle][]">
-                
-               </div>
-               </div>
-               <div class="row">
-               
-               <div class="form-group col-md-12">
-                    <label > وصف الدرس </label>
-                   <textarea 
-                   placeholder="مثال :هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء" 
-                    class="form-control" style="height: 100px" class="form-control tiny-editor"
-                    name="q[qbody][]" rows="3" ></textarea>
-               </div>
-              </div>
-
-            </div><!-- end content -->
-           
-        </div><!--End panel-collapse-->
-         <div class="row">
-             <div class="form-group col-md-4">
-                 <button  class="btn btn-info addQuestion" type="button">
-                     <i class="fa fa-plus"> اضف  درس اخر   </i>
-                 </button> 
-             </div>
-                 
-             </div>
-       </div>
-    </div><!--End Panel-->
-                            
+                    
 
 
 

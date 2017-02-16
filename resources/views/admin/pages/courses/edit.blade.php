@@ -102,7 +102,7 @@
 
                                     name="cat_id" class="form-control">
                                         <option value="{{$course->cat_id}}">
-                                        {{$course->Category->name}}
+                                        {{$course->Category['name']}}
                                         </option>
                                         @foreach ($categories as $category)
                                            
@@ -165,21 +165,42 @@
                                 <label class="col-md-6"> عن الكورس </label>
                                 <div class="form-group col-md-12">
                                     <textarea class="form-control tiny-editor"
-                                     name="body" rows="3" placeholder=""></textarea>
+                                     name="body" rows="3" placeholder="">
+                                       
+                                       {{$course->body}}
+                                     </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="col-md-6"> واجبات ومهام  </label>
+                                <div class="form-group col-md-12">
+                                    <textarea class="form-control tiny-editor"
+
+                                     name="tasks" rows="3" placeholder="ادخل واجبات ومهام الدورة">
+                                         {{$course->tasks}}
+                                     </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                               <label class="col-md-12"> الدروس المستفاده 
+                                <small>يرجى ادخال الدروس المستفادة مفصوله ب (-)</small>
+                                <div class="form-group col-md-12">
+                                    <textarea class="form-control tiny-editor"
+                                     name="lessons_learned" rows="3" placeholder="">
+                                       {{$course->lessons_learned}}
+                                     </textarea>
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-6"> الدروس المستفاده </label>
+                               <label class="col-md-12"> أهداف الكورس 
+                               <small>يرجى ادخال اهداف الكورس  مفصوله ب (-)</small>
                                 <div class="form-group col-md-12">
                                     <textarea class="form-control tiny-editor"
-                                     name="lessons_learned" rows="3" placeholder=""></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-6"> أهداف الكورس </label>
-                                <div class="form-group col-md-12">
-                                    <textarea class="form-control tiny-editor"
-                                     name="aim" rows="3" placeholder=""></textarea>
+                                     name="aim" rows="3" placeholder="">
+                                       {{$course->aim}}
+                                     </textarea>
                                 </div>
                             </div>
 
@@ -188,71 +209,9 @@
                             </div>
 
                             <div class="panel">
-                                <a class="collapsed" href="#question3" data-toggle="collapse" data-parent="#faq-1">
-                                    الدروس
-                                </a>
-                                <div class="panel-collapse collapse in" id="question3" >
-                                <div class="allQuestion">
-                                <div class="panel-content" >
+                              
 
-  
-@if($course->lessons)
-@for($i=0;$i<$lessons_count;$i++)
-<section class=" lesson question" style="padding: 40px;">
-<div class="alert alert-info" >
-
-               <div class="row " >
-               
-               <div class="form-group col-md-12">
-               <label > عنوان الدرس  </label>
-               <input  
-               class="form-control"  
-               placeholder="مثال:  الدرس الاول | مقدمة "
-                type="text" 
-                name="q[qtitle][]"
-                value=" {{$course->lessons['qtitle'][$i]}} " 
-                >
-                
-               </div>
-               </div>
-               <div class="row">
-               
-               <div class="form-group col-md-12">
-                    <label > وصف الدرس </label>
-                   <textarea 
-                 
-
-                    class="form-control" style="height: 100px" class="form-control tiny-editor"
-                    name="q[qbody][]" rows="3" >
-                      {{$course->lessons['qbody'][$i]}} 
-                    </textarea>
-               </div>
-              </div>
-              <div class="form-group col-md-12" >
-                <button class="btn btn-danger remove_lesson" type="button">حذف </button>
-              </div>
-
-              </div>
-              
-              </section>
-
-@endfor
-@endif
-
-
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <button  class="btn btn-info addQuestion2" type="button">
-                                            <i class="fa fa-plus"> اضف  درس اخر   </i>
-                                        </button> 
-                                    </div>
-                                        
-                                    </div>
-                            </div>
-
+                                
 
                        
 

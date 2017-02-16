@@ -82,6 +82,13 @@ Route::group(['namespace' => 'Site'], function () {
         Route::get('/{slug}', 'CategoryController@getIndex')->name('site.category.index');
     });
 
+    /**
+    *  course  Category routes
+    */
+    Route::group(['prefix'=>'coursecategory'],function(){
+        Route::get('/{slug}', 'CourseCategoryController@getIndex')->name('site.coursecategory.index');
+    });
+
 
   /**
     *  course routes

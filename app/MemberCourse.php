@@ -13,4 +13,14 @@ class MemberCourse extends Model
         'agree'
 
     ];
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course' ,'course_id');
+    }
+
+    public function member()
+    {
+        return $this->belongsTo('App\Member' ,'member_id');
+    }
 }
