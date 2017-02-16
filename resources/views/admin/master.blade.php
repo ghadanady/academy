@@ -47,6 +47,8 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/Style-AR-2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/sweetalert.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/style.css') }}">
+     <link rel="stylesheet" href="{{ asset('assets/admin/css/datepicker.css') }}">
+
     @yield('styles')
 
 
@@ -165,6 +167,7 @@
     <script src="{{ asset('assets/admin/dist/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script>
 
+
     <!-- <script src="{{ asset('assets/admin/dist/js/jquery.nicescroll.js') }}"></script> -->
 
     <div id="common-modal" class="modal fade" role="dialog">
@@ -180,6 +183,11 @@
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script src="{{ asset('assets/admin/process.js') }}"></script>
     <script src="{{ asset('assets/admin/sweetalert.min.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/bootstrap-datepicker.js') }}"></script>
+      <script src="{{ asset('assets/admin/js/bootstrap-datepicker-prev.js') }}"></script>
+   
+
+
     <script type="text/javascript">
     $(document).ready(function () {
         "use strict";
@@ -187,6 +195,15 @@
             latitude: {{ $settings->map_lat }},
             longitude: {{ $settings->map_lng }}
         });
+
+
+  
+  $('.datepicker').datepicker({
+     format: 'd-m-Y'
+  });
+
+
+
     });
     </script>
 </body>

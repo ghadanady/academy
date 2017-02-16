@@ -73,7 +73,7 @@
 
                                             <th>العنوان </th>
 
-                                            <th>الحاله </th>
+                                          
 
 
 
@@ -99,9 +99,9 @@
 
                                                 </td>
 
-                                                <td>{{ $article->title }}</td>
+                                                <td>{{ $article->name }}</td>
 
-                                                <td>{{ $article->active ? 'فعال' : 'غير فعال' }}</td>
+                                                
 
 
                                                 <td>{{ $article->created_at->toCookieString() }}</td>
@@ -110,13 +110,16 @@
 
                                                 <td class="text-center">
 
-                                                    <a href="{{ route('admin.lesson.edit' , ['id' => $article->id ]) }}" class="btn btn-success "  >
+                                                   
+                                                   
+                                                        <a
+                                                    href="{{url('admin/test/info/'.$article->id)}}" class=" btn btn-primary"
+                                                    >
+                                                        <li class="fa fa-pencil"> {{ trans('admin_global.btn_edit') }}</li>
+                                                    </a >
 
-                                                        <li class="fa fa-pencil"> عرض/تعديل</li>
 
-                                                    </a>
-
-                                                    <a data-url="{{ route('admin.lesson.delete' , ['id' => $article->id ]) }}" class="btn btn-danger modal-delete-btn"  >
+                                                    <a data-url="{{ route('admin.test.delete' , ['id' => $article->id ]) }}" class="btn btn-danger modal-delete-btn"  >
 
                                                         <li class="fa fa-trash"> حذف</li>
 

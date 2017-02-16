@@ -68,6 +68,94 @@
     })
 
 
+
+//add  question
+
+
+       $('.remove_qu').click(function(){
+         
+          var lesson= $(this).closest('section') 
+          console.log(lesson)       
+              lesson.remove();
+      });
+
+
+ 
+
+
+    /***************************************************************************
+     * add  test question 
+     **************************************************************************/
+
+     var key=0;
+     $('.addTestQuestion').click(function(){
+        key++;
+         
+         //var q=$('.testQuestion').html();
+         var html='<div class="row col-md-12" style="margin-bottom: 50px;">'+
+                 ' <div class="row col-md-12">'+
+                ' <div class="row col-md-12"><input class="form-control" '+
+                ' type="text" placeholder="ادخل السؤال" name="q['+key+'][title][]"></div>'+
+                '<div class="row col-md-12">'+
+               ' <input type="text"  class="form-control" placeholder="ادخل الاجابه الصحيحه "'+
+                ' name="q['+key+'][true]"></div>'+
+                '<span class="row col-md-12 answer"  >'+
+                '<input  type="text" class="form-control" placeholder="ادخل الاجابه اخرى  " '+
+                 'name="q['+key+'][notTrue][]">'+   
+                ' </span>'+
+               ' <button  data-key="'+key+'"class=" addAnswer btn btn-info  form-control" type="button">'+
+               ' اضف اجابه اخرى </button></div></div>';
+        
+         $('.allQuetion').append(html);
+
+     });
+
+    /***************************************************************************
+     * add  test question  answer
+     **************************************************************************/
+
+
+     $(document).on('click','.addAnswer',function(){
+
+
+        var key=$(this).attr('data-key');
+        var q=' <input  type="text" class="form-control" placeholder="ادخل الاجابه اخرى  "'+
+              ' name="q['+key+'][notTrue][]">';
+    
+         $(this).prev().append(q);
+         
+     });
+
+
+
+
+     $('.addQuestion2').click(function(){
+
+         var html='<div class="alert alert-info" >'+
+                  '<div class="row " >'+               
+                  '<div class="form-group col-md-12">'+
+                  '<label > عنوان الدرس  </label>'+
+                  '<input class="form-control" '+ 
+                  ' placeholder="مثال:  الدرس الاول | مقدمة "'+
+                  ' type="text"  name="q[qtitle][]">'+
+                  '</div></div> <div class="row">'+
+                  '<div class="form-group col-md-12">'+
+                  '<label > وصف الدرس </label>'+
+                  '<textarea class="form-control" style="height: 100px" '+
+                   'class="form-control tiny-editor"'+
+                   'name="q[qbody][]" rows="3" >'+
+                   '</textarea></div></div>'+
+                   '<div class="form-group col-md-12" >'+
+                   '<button class="btn btn-danger remove_lesson" '+
+                   'type="button">حذف </button>'+
+                   '</div> </div>';
+         //var q=$('.question').html();
+        
+         $('.allQuestion').append(html);
+     })
+
+
+
     /***************************************************************************
     * Show Edit Modal
     **************************************************************************/

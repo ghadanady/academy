@@ -57,13 +57,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::group(['prefix' => 'test'], function () {
                 Route::get('/{id}','TestController@getIndex')->name('admin.test.index');
                 Route::get('/add/{course_id?}','TestController@getAdd')->name('admin.test.add');
-                Route::post('add','TestController@postAdd')->name('admin.test.postaddlesson');;
-                Route::get('edit/{id}','TestController@getEdit')->name('admin.test.edit');
-                Route::post('edit/{id}','TestController@postEdit');
+                Route::post('add','TestController@postAdd')->name('admin.test.postaddTest');;
+               
                 Route::post('/action/{action}', 'TestController@postAction');
                 Route::get('/delete/{id}','TestController@getDelete')->name('admin.test.delete');
                 Route::get('/filter/{filter}', 'TestController@getFilter');
                 Route::get('/search/{q?}', 'TestController@getSearch');
+
+                Route::get('/info/{id}', 'TestController@postInfo');
+                Route::post('/edit', 'TestController@postEdit')->name('admin.test.edit');
+
             });
 
 

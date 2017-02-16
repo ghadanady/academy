@@ -63,7 +63,7 @@
                                                      class=" btn btn-warning" 
                                                     >
                                                         <li class="fa fa-pencil">
-                                                    اضافه اختبار
+                                                   كل الاختبارات 
                                                         </li>
                                                     </a >
 
